@@ -1,0 +1,86 @@
+" window size
+set lines=70
+set columns=84
+
+" no wrap
+set nowrap
+
+" change directory
+set autochdir
+
+" tab title
+set guitabtooltip=%t
+
+" Open TagList on startup
+let Tlist_Auto_Open=2
+let Tlist_Auto_Update=1
+
+" TagList window width
+let Tlist_WinWidth = 50
+
+" GUI
+if has("gui")
+
+	" Colorscheme
+	colorscheme wombat256
+
+	" Font
+	if has ("win32")
+		set guifont=Consolas:h10
+	elseif has ("mac")
+		"set guifont=Menlo:h11
+	else
+		set guifont=Monospace\ 9
+	endif
+
+
+	" Win32 / Unix Ctrl+C, V, X, Z
+	if has ("win32") || has ("unix")
+
+		"<Ctrl-X> -- cut (goto visual mode and cut)
+		imap <C-X> <C-O>vgG
+		vmap <C-X> "*x<Esc>i
+
+		"<Ctrl-C> -- copy (goto visual mode and copy)
+		imap <C-C> <C-O>vgG
+		vmap <C-C> "*y<Esc>i
+
+		"<Ctrl-A> -- copy all
+		imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
+		vmap <C-A> <ESC>gggH<C-O>G<Esc>i
+
+		"<Ctrl-V> -- paste
+		nm \\paste\\ "=@*.'xy'<CR>gPFx"_2x:echo<CR>
+		imap <C-V> x<Esc>\\paste\\"_s
+		vmap <C-V> "-cx<Esc>\\paste\\"_x
+
+		" Undo in insert mode.
+		imap <c-z> <c-o>u
+	endif
+
+	" Tab key shortcuts
+	if has("mac")
+		map <S-D-left> :tabprevious<CR>
+		map <M-D-left> :tabprevious<CR>
+		map <S-D-right> :tabnext<CR>
+		map <M-D-right> :tabnext<CR>
+	elseif has("win32") || has("unix")
+		nmap <C-tab> :tabnext<CR>
+		nmap <C-M-right> :tabnext<CR>
+		nmap <C-S-right> :tabnext<CR>
+		nmap <C-S-tab> :tabprevious<CR>
+		nmap <C-M-left> :tabprevious<CR>
+		nmap <C-S-left> :tabprevious<CR>
+		nmap <C-t> :tabnew<CR>
+	endif
+
+	" Fix backspace
+	set bs=2
+
+endif
+
+""""""""""""""""
+" KEY MAPPINGS "
+""""""""""""""""
+
+
