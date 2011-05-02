@@ -53,4 +53,4 @@ autocmd InsertEnter * :let @/=""
 autocmd InsertLeave * :let @/=""
 
 " automatically remove trailing whitespace
-autocmd BufWritePre *.py :%s/\s\+$//e
+"autocmd BufWritePre *.py :%s/\s\+$//e
