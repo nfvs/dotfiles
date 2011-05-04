@@ -1,3 +1,7 @@
+" Pathogen
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " Default encoding: Utf-8
 set encoding=utf-8
 
