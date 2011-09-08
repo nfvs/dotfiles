@@ -1,9 +1,5 @@
-" window size
-set lines=70
-set columns=84
-
 " no wrap
-set nowrap
+"set nowrap
 
 " change directory
 set autochdir
@@ -12,8 +8,8 @@ set autochdir
 set guitabtooltip=%t
 
 " Open TagList on startup
-let Tlist_Auto_Open=2
-let Tlist_Auto_Update=1
+"let Tlist_Auto_Open=2
+"let Tlist_Auto_Update=1
 
 " TagList window width
 let Tlist_WinWidth = 50
@@ -21,6 +17,10 @@ let Tlist_WinWidth = 50
 " GUI
 if has("gui")
 
+	" window size
+	set lines=70
+	set columns=84
+	
 	" Colorscheme
 	colorscheme wombat256
 
@@ -56,6 +56,11 @@ if has("gui")
 
 		" Undo in insert mode.
 		imap <c-z> <c-o>u
+
+		"<Ctrl-S> -- save file
+		map <C-s> :w<CR>
+		imap <C-s> <Esc>:w<CR>i
+
 	endif
 
 	" Tab key shortcuts
