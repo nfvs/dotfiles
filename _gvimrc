@@ -58,8 +58,10 @@ if has("gui")
 		imap <c-z> <c-o>u
 
 		"<Ctrl-S> -- save file
-		map <C-s> :w<CR>
-		imap <C-s> <Esc>:w<CR>i
+		noremap <C-S> :update<CR>
+		vnoremap <C-S> <C-C>:update<CR>
+		inoremap <C-S> <C-O>:update<CR>
+
 
 	endif
 
@@ -71,9 +73,11 @@ if has("gui")
 		map <M-D-right> :tabnext<CR>
 	elseif has("win32") || has("unix")
 		nmap <C-tab> :tabnext<CR>
+		imap <C-tab> <Esc>:tabnext<CR>
 		nmap <C-M-right> :tabnext<CR>
 		nmap <C-S-right> :tabnext<CR>
 		nmap <C-S-tab> :tabprevious<CR>
+		imap <C-S-tab> <Esc>:tabprevious<CR>
 		nmap <C-M-left> :tabprevious<CR>
 		nmap <C-S-left> :tabprevious<CR>
 		nmap <C-t> :tabnew<CR>

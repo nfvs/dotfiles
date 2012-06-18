@@ -58,3 +58,6 @@ autocmd InsertLeave * :let @/=""
 
 " automatically remove trailing whitespace
 "autocmd BufWritePre *.py :%s/\s\+$//e
+
+" Zen Coding
+let g:user_zen_leader_key = '<c-e>'
