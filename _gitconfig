@@ -2,6 +2,16 @@
 	name = Nuno Santos
 	email = nunofvsantos@gmail.com
 
+[core]
+	pager = less -FRSX
+	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	
+[alias]
+	co = checkout
+
+[push]
+	default = simple
+
 [color]
 	diff = auto
 	status = auto
@@ -26,9 +36,4 @@
 	changed = green
 	untracked = cyan
 
-[core]
-	pager = less -FRSX
-	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	
-[alias]
-	co = checkout
+
