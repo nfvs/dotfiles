@@ -18,7 +18,7 @@ set enc=utf-8
 
 " syntax / colorscheme
 syntax on
-"colorscheme desert
+colorscheme desert
 "colorscheme wombat256
 
 " indentation (size: 4)
