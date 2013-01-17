@@ -1,0 +1,12 @@
+{
+	"auto_upgrade_last_run": null,
+	"installed_packages":
+	[
+		"DocBlockr",
+		"Emmet",
+		"LiveReload",
+		"Markdown Preview",
+		"Package Control",
+		"SCSS"
+	]
+}
