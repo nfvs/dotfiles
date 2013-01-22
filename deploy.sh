@@ -22,7 +22,7 @@ DESTFILES_FULL=()
 
 
 # Destination directories relative to Home (~/)
-SUBLIME_TEXT_2="sublime-text-2"
+SUBLIME_TEXT_2="sublime-text-2/User"
 SUBLIME_TEXT_2_DEST_OSX="Library/Application Support/Sublime Text 2/Packages/User"
 SUBLIME_TEXT_2_DEST_UNIX=".config/sublime-text-2/Packages/User"
 

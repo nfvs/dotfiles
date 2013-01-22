@@ -6,12 +6,13 @@ Personal configurations files and tweaks.
 ## Applications
 
 ### Sublime Text 2
- * `sublime-text-2` directory with user configuration including packages, syntax-specific configuration, etc.
+ * `sublime-text-2/User` directory with User configuration including packages, syntax-specific configuration, etc.
+ * `sublime-text-2/Default` directory with Default and platform-specific configuration; copy only individual files, not entire directory.
 
 _Target directory:_
- * OS X: `~/Library/Application Support/Sublime Text 2/Packages/User`
- * Linux: `~/.config/sublime-text-2/Packages/User`
- * Windows: `%APPDATA%\Sublime Text 2\Packages\User`
+ * OS X: `~/Library/Application Support/Sublime Text 2/Packages/`
+ * Linux: `~/.config/sublime-text-2/Packages/`
+ * Windows: `%APPDATA%\Sublime Text 2\Packages\`
 
 ### Vim
  * `_vim/` directory with plugins and filetype-based syntax configuration
