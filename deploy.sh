@@ -7,6 +7,7 @@ FILES=(
 	"_vimrc"
 	"_gvimrc"
 	"_gitconfig"
+	"_hgrc"
 	"_screenrc")
 
 DESTFILES=(
@@ -14,6 +15,7 @@ DESTFILES=(
 	".vimrc"
 	".gvimrc"
 	".gitconfig"
+	".hgrc"
 	".screenrc")
 
 # Will hold full filenames
@@ -22,22 +24,31 @@ DESTFILES_FULL=()
 
 
 # Destination directories relative to Home (~/)
-SUBLIME_TEXT_2="sublime-text-2/User"
-SUBLIME_TEXT_2_DEST_OSX="Library/Application Support/Sublime Text 2/Packages/User"
-SUBLIME_TEXT_2_DEST_UNIX=".config/sublime-text-2/Packages/User"
+SUBLIME_TEXT_2_USER="sublime-text-2/User"
+SUBLIME_TEXT_2_USER_DEST_OSX="Library/Application Support/Sublime Text 2/Packages/User"
+SUBLIME_TEXT_2_USER_DEST_LINUX=".config/sublime-text-2/Packages/User"
 
+SUBLIME_TEXT_2_DEFAULT_OSX="sublime-text-2/Default/Preferences (OSX).sublime-settings"
+SUBLIME_TEXT_2_DEFAULT_OSX_DEST="Library/Application Support/Sublime Text 2/Packages/Default/Preferences (OSX).sublime-settings"
+SUBLIME_TEXT_2_DEFAULT_LINUX="sublime-text-2/Default/Preferences (Linux).sublime-settings"
+SUBLIME_TEXT_2_DEFAULT_LINUX_DEST="Library/Application Support/Sublime Text 2/Packages/Default/Preferences (Linux).sublime-settings"
 
-# 1) Detect platform, choose correct SUBLIME_TEXT_2_DEST
+# 1) Detect platform, choose correct SUBLIME_TEXT_2_USER_DEST,
+# SUBLIME_TEXT_2_DEFAULT and SUBLIME_TEXT_2_DEFAULT_DEST
 echo ""
 platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
 	echo "Platform detected: Linux"
-	SUBLIME_TEXT_2_DEST=$SUBLIME_TEXT_2_DEST_UNIX
+	SUBLIME_TEXT_2_USER_DEST=$SUBLIME_TEXT_2_USER_DEST_LINUX
+	SUBLIME_TEXT_2_DEFAULT=$SUBLIME_TEXT_2_DEFAULT_LINUX
+   	SUBLIME_TEXT_2_DEFAULT_DEST=$SUBLIME_TEXT_2_DEFAULT_LINUX_DEST
 elif [[ "$unamestr" == 'Darwin' ]]; then
 	echo "Platform detected: OS X"
    platform='osx'
-   SUBLIME_TEXT_2_DEST=$SUBLIME_TEXT_2_DEST_OSX
+   SUBLIME_TEXT_2_USER_DEST=$SUBLIME_TEXT_2_USER_DEST_OSX
+   SUBLIME_TEXT_2_DEFAULT=$SUBLIME_TEXT_2_DEFAULT_OSX
+   SUBLIME_TEXT_2_DEFAULT_DEST=$SUBLIME_TEXT_2_DEFAULT_OSX_DEST
 else
 	echo "Unknown platform, exiting."
 	exit 0
@@ -49,9 +60,10 @@ for f in "${!FILES[@]}" # iterate index, not values
 do
 	SRCFILE="${FILES[$f]}";
 	DESTFILE="~/${DESTFILES[$f]}";
-	echo -e "  ${SRCFILE}  \t --> ${DESTFILE}";
+	echo -e "  ${SRCFILE}  \t\t -->  ${DESTFILE}";
 done
-echo -e "  $SUBLIME_TEXT_2 --> ~/$SUBLIME_TEXT_2_DEST";
+echo -e "  $SUBLIME_TEXT_2_USER \t -->  ~/$SUBLIME_TEXT_2_USER_DEST";
+echo -e "  $SUBLIME_TEXT_2_DEFAULT --> ~/$SUBLIME_TEXT_2_DEFAULT_DEST";
 echo ""
 
 read -p "Continue? (y/n [n]) "
@@ -67,8 +79,10 @@ do
 	FILES_FULL+=("$PWD/${FILES[$f]}")
 	DESTFILES_FULL+=("$HOME/${DESTFILES[$f]}")
 done
-FILES_FULL+=("$PWD/$SUBLIME_TEXT_2")
-DESTFILES_FULL+=("$HOME/$SUBLIME_TEXT_2_DEST")
+FILES_FULL+=("$PWD/$SUBLIME_TEXT_2_USER")
+DESTFILES_FULL+=("$HOME/$SUBLIME_TEXT_2_USER_DEST")
+FILES_FULL+=("$PWD/$SUBLIME_TEXT_2_DEFAULT")
+DESTFILES_FULL+=("$HOME/$SUBLIME_TEXT_2_DEFAULT_DEST")
 
 # 4) Deploy!
 for f in "${!FILES_FULL[@]}" # iterate index, not values
@@ -80,7 +94,7 @@ do
 		read -p "overwrite file $DESTFILE? (y/n [n]) "
 		if [[ "$REPLY" == "y" || "$REPLY" == "Y" ]]
 		then
-			ln -sf "$SRCFILE" "$DESTFILE"
+			ln -sfn "$SRCFILE" "$DESTFILE"
 		else
 			echo "not overwritten"
 		fi
