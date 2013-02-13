@@ -1,3 +1,5 @@
 {
-  "color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme"
+  "color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme",
+  "hot_exit": false,
+  "remember_open_files": false
 }
