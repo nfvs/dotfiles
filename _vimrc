@@ -1,25 +1,41 @@
-" Pathogen
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-
 " Default encoding: Utf-8
 set encoding=utf-8
 
+" Vundle
+" Add this to .profile:
+" export TERM=xterm-256color
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" Vundle bundles!
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'wincent/Command-T'
+
+" re-enable filetype
 filetype plugin indent on
 
 " Use Vim settings, rather than Vi
 set nocompatible
 
-"
+" Disable modelines (why?)
 set modelines=0
+set nomodeline
 
 " UTF-8
 set enc=utf-8
 
-" syntax / colorscheme
+" syntax
 syntax on
-colorscheme desert
-"colorscheme wombat256
+
+" Solarized theme
+set background=dark
+" uncomment next line if unable to change terminal colors
+"let g:solarized_termcolors=256
+colorscheme solarized
 
 " indentation (size: 4)
 set autoindent
@@ -40,14 +56,7 @@ set number
 " show cursor position always
 set ruler 
 
-" Set status line
-"set statusline=[%02n]\ %f\ %(\[%M%R%H]%)%=\ %4l,%02c%2V\ %P%*
-
-" Always display a status line at the bottom of the window
-"set laststatus=1
-
 " showmatch: Show the matching bracket for the last ')'?
-set number
 set showmatch
 
 " highlight all search results
@@ -55,9 +64,6 @@ set showmatch
 set hlsearch
 autocmd InsertEnter * :let @/=""
 autocmd InsertLeave * :let @/=""
-
-" automatically remove trailing whitespace
-"autocmd BufWritePre *.py :%s/\s\+$//e
 
 " Zen Coding
 let g:user_zen_leader_key = '<c-e>'
