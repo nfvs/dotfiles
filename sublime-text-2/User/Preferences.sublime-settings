@@ -1,5 +1,9 @@
 {
-  "color_scheme": "Packages/Color Scheme - Default/Sunburst.tmTheme",
-  "hot_exit": false,
-  "remember_open_files": false
+	"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"remember_open_files": false
 }
