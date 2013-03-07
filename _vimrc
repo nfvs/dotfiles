@@ -1,3 +1,6 @@
+" Vundle needs to be installed before:
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
 " Default encoding: Utf-8
 set encoding=utf-8
 
@@ -30,6 +33,7 @@ set enc=utf-8
 
 " syntax
 syntax on
+set cursorline
 
 " Solarized theme
 set background=dark
