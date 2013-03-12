@@ -5,10 +5,12 @@
 [core]
 	pager = less -FRSX
 	filemode = false
-	autocrlf = input # should be true on Windows
+	# autocrlf should be input on Linux/OSX and true on Windows
+	autocrlf = input
 	
 [alias]
 	co = checkout
+	s = status -b -s
 
 [push]
 	default = simple
