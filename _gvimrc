@@ -14,18 +14,19 @@ if has("gui")
 	set lines=70
 	set columns=84
 	
-	" Colorscheme
-	colorscheme wombat256
-
 	" Font
 	if has ("win32")
 		set guifont=Consolas:h10
 	elseif has ("mac")
-		"set guifont=Menlo:h11
+		set guifont=Menlo:h11
 	else
 		set guifont=Monospace\ 9
 	endif
 
+
+	""""""""""""""""
+	" KEY MAPPINGS "
+	""""""""""""""""
 
 	" Win32 / Unix Ctrl+C, V, X, Z
 	if has ("win32") || has ("unix")
@@ -81,8 +82,5 @@ if has("gui")
 
 endif
 
-""""""""""""""""
-" KEY MAPPINGS "
-""""""""""""""""
 
 

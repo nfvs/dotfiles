@@ -4,12 +4,12 @@
 	[
 		"DocBlockr",
 		"Emmet",
-		"Git",
 		"GitGutter",
-		"LiveReload",
+		"Handlebars",
 		"Markdown Preview",
 		"Package Control",
 		"SCSS",
-		"Solarized Color Scheme"
+		"Solarized Color Scheme",
+		"SublimeLinter"
 	]
 }
