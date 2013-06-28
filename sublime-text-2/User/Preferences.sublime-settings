@@ -1,10 +1,10 @@
 {
-	"color_scheme": "Packages/Solarized Color Scheme/Solarized (dark).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
 	"hot_exit": false,
 	"ignored_packages":
 	[
 		"Vintage"
 	],
 	"remember_open_files": false,
-	"trim_trailing_white_space_on_save": true
+	"sublimelinter": "load-save"
 }
