@@ -2,13 +2,14 @@
 	"auto_upgrade_last_run": null,
 	"installed_packages":
 	[
-		"DocBlockr",
 		"Emmet",
 		"GitGutter",
 		"Markdown Preview",
 		"Package Control",
-		"SCSS",
-		"Solarized Color Scheme",
-		"SublimeLinter"
+		"Theme - Flatland"
+	],
+	"repositories":
+	[
+		"https://github.com/lunixbochs/sublimelint/tree/st3"
 	]
 }
