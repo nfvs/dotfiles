@@ -5,6 +5,7 @@
 [core]
 	pager = less -FRSX
 	filemode = false
+	
 	editor = vim
 	# autocrlf should be input on Linux/OSX and true on Windows
 	autocrlf = input

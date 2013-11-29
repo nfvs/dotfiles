@@ -3,9 +3,9 @@
 	"installed_packages":
 	[
 		"Emmet",
-		"GitGutter",
 		"Markdown Preview",
 		"Package Control",
+		"Perforce",
 		"Theme - Flatland"
 	],
 	"repositories":
