@@ -17,6 +17,7 @@ Bundle 'gmarik/vundle'
 " Vundle bundles!
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'wincent/Command-T'
+Bundle 'Lokaltog/powerline'
 
 " re-enable filetype
 filetype plugin indent on
@@ -27,6 +28,7 @@ set nocompatible
 " Disable modelines (why?)
 set modelines=0
 set nomodeline
+set laststatus=2
 
 " UTF-8
 set enc=utf-8
@@ -47,6 +49,13 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 "set softtabstop=4
+
+" Powerline (requires vim-solarized-powerline)
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+let g:Powerline_theme="default"
+let g:Powerline_colorscheme="Solarized Dark"
+let g:Powerline_symbols = 'fancy'
+
 
 " Python specific: don't unindent comments
 :inoremap # X<C-H>#
