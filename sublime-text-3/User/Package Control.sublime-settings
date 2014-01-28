@@ -6,10 +6,11 @@
 		"Markdown Preview",
 		"Package Control",
 		"Perforce",
+		"SublimeLinter",
+		"SublimeLinter-html-tidy",
+		"SublimeLinter-jshint",
+		"SublimeLinter-pep8",
+		"SublimeLinter-pyflakes",
 		"Theme - Flatland"
-	],
-	"repositories":
-	[
-		"https://github.com/lunixbochs/sublimelint/tree/st3"
 	]
 }
