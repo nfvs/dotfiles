@@ -1,5 +1,10 @@
 .DS_Store
 sublime-text-2/User/Package Control.last-run
 sublime-text-3/User/Package Control.last-run
+sublime-text-3/User/Package Control.ca-list
+sublime-text-3/User/Package Control.ca-bundle
+sublime-text-3/User/Package Control.system-ca-bundle
 sublime-text-3/User/Package Control.cache/
+sublime-text-3/User/Package Control.ca-certs/
 sublime-text-3/User/linters/
+sublime-text-3/User/*.tmTheme

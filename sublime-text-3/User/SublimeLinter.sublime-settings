@@ -17,12 +17,17 @@
                 "args": [],
                 "excludes": []
             },
+            "pep257": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
             "pep8": {
                 "@disable": false,
                 "args": [],
                 "excludes": [],
                 "ignore": "",
-                "max-line-length": 100,
+                "max-line-length": 79,
                 "select": ""
             },
             "pyflakes": {

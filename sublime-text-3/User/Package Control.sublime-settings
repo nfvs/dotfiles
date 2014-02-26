@@ -9,6 +9,7 @@
 		"SublimeLinter",
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-jshint",
+		"SublimeLinter-pep257",
 		"SublimeLinter-pep8",
 		"SublimeLinter-pyflakes",
 		"Theme - Flatland"
