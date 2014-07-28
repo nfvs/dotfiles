@@ -1,6 +1,9 @@
 " Vundle needs to be installed before:
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
+" Use Vim settings, rather than Vi
+set nocompatible
+
 " Default encoding: Utf-8
 set encoding=utf-8
 
@@ -8,30 +11,28 @@ set encoding=utf-8
 " Add this to .profile:
 " export TERM=xterm-256color
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 " Vundle bundles!
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'wincent/Command-T'
-Bundle 'Lokaltog/powerline'
+Bundle 'bling/vim-airline'
+Bundle 'scrooloose/nerdtree'
+Bundle 'nfvs/ctrlp.vim'
+Bundle 'tpope/vim-vinegar'
+Bundle 'klen/python-mode'
+Bundle 'scrooloose/syntastic'
 
 " re-enable filetype
 filetype plugin indent on
-
-" Use Vim settings, rather than Vi
-set nocompatible
 
 " Disable modelines (why?)
 set modelines=0
 set nomodeline
 set laststatus=2
-
-" UTF-8
-set enc=utf-8
 
 " syntax
 syntax on
@@ -44,18 +45,13 @@ set background=dark
 colorscheme solarized
 
 " indentation (size: 4)
-set autoindent
-set smartindent
-set tabstop=4
-set shiftwidth=4
-"set softtabstop=4
-
-" Powerline (requires vim-solarized-powerline)
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-let g:Powerline_theme="default"
-let g:Powerline_colorscheme="Solarized Dark"
-let g:Powerline_symbols = 'fancy'
-
+set textwidth=79  " lines longer than 79 columns will be broken
+set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
+set tabstop=4     " a hard TAB displays as 4 columns
+set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set shiftround    " round indent to multiple of 'shiftwidth'
+set autoindent    " align the new line indent with the previous line
+set expandtab     " insert spaces when hitting TABs
 
 " Python specific: don't unindent comments
 :inoremap # X<C-H>#
@@ -80,3 +76,6 @@ autocmd InsertLeave * :let @/=""
 
 " Zen Coding
 let g:user_zen_leader_key = '<c-e>'
+
+" CtrlP
+let g:ctrlp_custom_ancestors = ['pom.xml']

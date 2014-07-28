@@ -7,16 +7,22 @@ set autochdir
 " tab title
 set guitabtooltip=%t
 
+" hide toolbar, menu bar, scrollbar
+"set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+"set guioptions-=r  "scrollbar
+
 " GUI
 if has("gui")
 
 	" window size
 	set lines=70
 	set columns=84
-	
+
 	" Font
 	if has ("win32")
-		set guifont=Consolas:h10
+		"set guifont=Consolas:h10
+		set guifont=Consolas_for_Powerline_FixedD:h10
 	elseif has ("mac")
 		"set guifont=Menlo\ for\ Powerline:h11
 		set guifont=Meslo\ LG\ M\ for\ Powerline:h11
