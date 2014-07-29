@@ -63,7 +63,7 @@ set backspace=indent,eol,start
 set number
 
 " show cursor position always
-set ruler 
+set ruler
 
 " showmatch: Show the matching bracket for the last ')'?
 set showmatch
@@ -74,8 +74,11 @@ set hlsearch
 autocmd InsertEnter * :let @/=""
 autocmd InsertLeave * :let @/=""
 
+" append a $ character when changing a word
+"set cpoptions+=$
+
 " Zen Coding
 let g:user_zen_leader_key = '<c-e>'
 
 " CtrlP
-let g:ctrlp_custom_ancestors = ['pom.xml']
+let g:ctrlp_custom_ancestors = ['pom.xml', '.p4ignore']
