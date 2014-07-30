@@ -22,7 +22,9 @@ Bundle 'nfvs/ctrlp.vim'
 Bundle 'tpope/vim-vinegar'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'mattn/emmet-vim'
+Bundle 'nfvs/vim-perforce'
 
 call vundle#end()
 
@@ -46,6 +48,10 @@ set background=dark
 " uncomment next line if unable to change terminal colors
 "let g:solarized_termcolors=256
 colorscheme solarized
+
+" git-gutter fixes for Solarized dark
+highlight clear SignColumn
+autocmd ColorScheme * highlight clear SignColumn
 
 " indentation (size: 4)
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
