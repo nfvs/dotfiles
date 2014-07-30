@@ -30,6 +30,9 @@ if has("gui")
 		set guifont=Monospace\ 9
 	endif
 
+    if has ("win32")
+        "set noshellslash
+    endif
 
 	""""""""""""""""
 	" KEY MAPPINGS "
