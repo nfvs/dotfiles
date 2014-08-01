@@ -24,7 +24,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mattn/emmet-vim'
-Bundle 'nfvs/vim-perforce'
 
 call vundle#end()
 
@@ -48,10 +47,6 @@ set background=dark
 " uncomment next line if unable to change terminal colors
 "let g:solarized_termcolors=256
 colorscheme solarized
-
-" git-gutter fixes for Solarized dark
-highlight clear SignColumn
-autocmd ColorScheme * highlight clear SignColumn
 
 " indentation (size: 4)
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
@@ -81,6 +76,14 @@ autocmd InsertLeave * :let @/=""
 " append a $ character when changing a word
 "set cpoptions+=$
 
+" If you prefer the Omni-Completion tip window to close when a selection is
+" made, these lines close it on movement in insert mode or when leaving
+" insert mode
+autocmd CursorMovedI * if pumvisible() == 0|silent! pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+
+" Plugins
+
 " Zen Coding
 let g:user_zen_leader_key = '<c-e>'
 
@@ -94,13 +97,9 @@ let g:user_emmet_leader_key='<C-E>'
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_lint = 0
 
-" If you prefer the Omni-Completion tip window to close when a selection is
-" made, these lines close it on movement in insert mode or when leaving
-" insert mode
-autocmd CursorMovedI * if pumvisible() == 0|silent! pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
-
-" Perforce!
-" When writing a read-only file, try to open it in P4
-"autocmd BufWritePre * :if &readonly && confirm('File is read only. Open for edit?', "&Yes\n&No", 1) == 1 | !p4 edit %
-
+" vim-gitgutter
+let g:gitgutter_realtime=0  " don't update in realtime
+let g:gitgutter_eager=0
+" vim-gitgutter: fixes for solarized dark colorscheme
+highlight clear SignColumn
+autocmd ColorScheme * highlight clear SignColumn
