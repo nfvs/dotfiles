@@ -90,7 +90,7 @@ autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
 let g:user_zen_leader_key = '<c-e>'
 
 " CtrlP
-let g:ctrlp_custom_ancestors = ['pom.xml', '.p4ignore']
+let g:ctrlp_root_markers = ['pom.xml', '.p4ignore']
 
 " Emmet
 let g:user_emmet_leader_key='<C-E>'
