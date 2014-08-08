@@ -18,7 +18,7 @@ Bundle 'gmarik/Vundle.vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
 Bundle 'eiginn/netrw'
-Bundle 'nfvs/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'tpope/vim-vinegar'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
@@ -52,8 +52,10 @@ colorscheme solarized
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
 set tabstop=4     " a hard TAB displays as 4 columns
 
-" Python specific: don't unindent comments
+" Python specific
+" don't unindent comments
 :inoremap # X<C-H>#
+set wildignore+=*.pyc   " ignore .pyc in CtrlP, etc..
 
 " backspace over everything in insert mode
 set backspace=indent,eol,start
