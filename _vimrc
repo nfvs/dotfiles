@@ -95,6 +95,10 @@ let g:ctrlp_root_markers = ['pom.xml', '.p4ignore']
 " Emmet
 let g:user_emmet_leader_key='<C-E>'
 
+" Syntastic
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = "--max-line-length=120"
+
 " Python-Mode
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_lint = 0

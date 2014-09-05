@@ -50,8 +50,8 @@ if has("gui")
 		vmap <C-C> "*y<Esc>i
 
 		"<Ctrl-A> -- copy all
-		imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
-		vmap <C-A> <ESC>gggH<C-O>G<Esc>i
+		"imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
+		"vmap <C-A> <ESC>gggH<C-O>G<Esc>i
 
 		"<Ctrl-V> -- paste
 		nm \\paste\\ "=@*.'xy'<CR>gPFx"_2x:echo<CR>
