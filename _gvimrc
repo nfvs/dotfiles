@@ -26,13 +26,13 @@ if has("gui")
 	elseif has ("mac")
 		"set guifont=Menlo\ for\ Powerline:h11
 		set guifont=Meslo\ LG\ M\ for\ Powerline:h11
-	else
+  else
 		set guifont=Monospace\ 9
 	endif
 
-    if has ("win32")
-        "set noshellslash
-    endif
+  if has ("win32")
+    "set noshellslash
+  endif
 
 	""""""""""""""""
 	" KEY MAPPINGS "
@@ -40,6 +40,8 @@ if has("gui")
 
 	" Win32 / Unix Ctrl+C, V, X, Z
 	if has ("win32") || has ("unix")
+    "<Ctrl-Space> -- autocomplete
+    inoremap <C-Space> <C-n>
 
 		"<Ctrl-X> -- cut (goto visual mode and cut)
 		imap <C-X> <C-O>vgG

@@ -24,6 +24,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mattn/emmet-vim'
+"Bundle 'klen/python-mode'
 
 call vundle#end()
 
