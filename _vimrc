@@ -4,6 +4,8 @@
 " Use Vim settings, rather than Vi
 set nocompatible
 
+set fileformats=unix,dos
+
 " Vundle
 " Add this to .profile:
 " export TERM=xterm-256color
@@ -19,11 +21,13 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
 Bundle 'eiginn/netrw'
 Bundle 'ctrlpvim/ctrlp.vim'
+Bundle 'Shougo/unite.vim'
 Bundle 'tpope/vim-vinegar'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mattn/emmet-vim'
+Bundle 'mitsuhiko/vim-jinja'
 "Bundle 'klen/python-mode'
 
 call vundle#end()
@@ -43,6 +47,8 @@ set laststatus=2
 syntax on
 set cursorline
 
+set autochdir
+
 " Solarized theme
 set background=dark
 " uncomment next line if unable to change terminal colors
@@ -52,6 +58,7 @@ colorscheme solarized
 " indentation (size: 4)
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
 set tabstop=4     " a hard TAB displays as 4 columns
+set expandtab     " use spaces
 
 " Python specific
 " don't unindent comments
@@ -86,6 +93,12 @@ autocmd CursorMovedI * if pumvisible() == 0|silent! pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
 " Plugins
+
+" netrw/vinegar
+let g:netrw_keepdir = 0
+"let g:netrw_liststyle = 3
+let g:netrw_preview = 1
+let g:netrw_altv = 1
 
 " Zen Coding
 let g:user_zen_leader_key = '<c-e>'

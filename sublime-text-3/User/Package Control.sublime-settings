@@ -12,6 +12,7 @@
 		"SublimeLinter-pep257",
 		"SublimeLinter-pep8",
 		"SublimeLinter-pyflakes",
+		"SublimeLinter-shellcheck",
 		"Theme - Flatland"
 	]
 }

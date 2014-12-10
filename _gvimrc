@@ -45,11 +45,11 @@ if has("gui")
 
 		"<Ctrl-X> -- cut (goto visual mode and cut)
 		imap <C-X> <C-O>vgG
-		vmap <C-X> "*x<Esc>i
+		vmap <C-X> "*x<Esc>
 
 		"<Ctrl-C> -- copy (goto visual mode and copy)
 		imap <C-C> <C-O>vgG
-		vmap <C-C> "*y<Esc>i
+		vmap <C-C> "*y<Esc>
 
 		"<Ctrl-A> -- copy all
 		"imap <C-A> <C-O>gg<C-O>gH<C-O>G<Esc>
