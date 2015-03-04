@@ -20,24 +20,33 @@
             "pep257": {
                 "@disable": false,
                 "args": [],
-                "excludes": []
+                "excludes": [],
+                "ignore": ""
             },
             "pep8": {
                 "@disable": false,
                 "args": [],
                 "excludes": [],
                 "ignore": "",
-                "max-line-length": 79,
+                "max-line-length": 120,
                 "select": ""
             },
             "pyflakes": {
                 "@disable": false,
                 "args": [],
+                "excludes": [],
+                "max-line-length": 120,
+            },
+            "shellcheck": {
+                "@disable": false,
+                "args": [],
+                "exclude": "",
                 "excludes": []
             }
         },
         "mark_style": "outline",
         "no_column_highlights_line": false,
+        "passive_warnings": false,
         "paths": {
             "linux": [],
             "osx": [],

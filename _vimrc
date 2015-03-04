@@ -58,6 +58,7 @@ colorscheme solarized
 " indentation (size: 4)
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
 set tabstop=4     " a hard TAB displays as 4 columns
+set softtabstop=4
 set expandtab     " use spaces
 
 " Python specific
@@ -78,10 +79,10 @@ set ruler
 set showmatch
 
 " highlight all search results
-" clear search string when entering insert mode
 set hlsearch
-autocmd InsertEnter * :let @/=""
-autocmd InsertLeave * :let @/=""
+" clear search string when entering insert mode
+"autocmd InsertEnter * :let @/=""
+"autocmd InsertLeave * :let @/=""
 
 " append a $ character when changing a word
 "set cpoptions+=$

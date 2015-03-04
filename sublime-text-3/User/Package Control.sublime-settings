@@ -1,5 +1,8 @@
 {
 	"auto_upgrade_last_run": null,
+	"in_process_packages":
+	[
+	],
 	"installed_packages":
 	[
 		"Emmet",
@@ -9,7 +12,6 @@
 		"SublimeLinter",
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-jshint",
-		"SublimeLinter-pep257",
 		"SublimeLinter-pep8",
 		"SublimeLinter-pyflakes",
 		"SublimeLinter-shellcheck",
