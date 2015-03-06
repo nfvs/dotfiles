@@ -21,7 +21,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
 Bundle 'eiginn/netrw'
 Bundle 'ctrlpvim/ctrlp.vim'
-Bundle 'Shougo/unite.vim'
+"Bundle 'Shougo/unite.vim'
 Bundle 'tpope/vim-vinegar'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
@@ -29,6 +29,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'mattn/emmet-vim'
 Bundle 'mitsuhiko/vim-jinja'
 "Bundle 'klen/python-mode'
+Bundle 'majutsushi/tagbar'
 
 call vundle#end()
 
@@ -101,14 +102,11 @@ let g:netrw_keepdir = 0
 let g:netrw_preview = 1
 let g:netrw_altv = 1
 
-" Zen Coding
-let g:user_zen_leader_key = '<c-e>'
-
 " CtrlP
 let g:ctrlp_root_markers = ['pom.xml', '.p4ignore']
 
 " Emmet
-let g:user_emmet_leader_key='<C-E>'
+let g:user_emmet_leader_key='<C-e>'
 
 " Syntastic
 let g:syntastic_python_checkers = ['flake8']
@@ -124,3 +122,11 @@ let g:gitgutter_eager=0
 " vim-gitgutter: fixes for solarized dark colorscheme
 highlight clear SignColumn
 autocmd ColorScheme * highlight clear SignColumn
+
+" Tagbar
+let g:tagbar_autoclose = 1  " autoclose when selecting
+let g:tagbar_sort = 0  " dont sort
+let g:tagbar_autoshowtag = 1
+let g:tagbar_left = 1  " left/top position
+let g:tagbar_vertical = 20
+nmap <C-g> :TagbarToggle<CR>
