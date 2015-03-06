@@ -14,22 +14,22 @@ set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 " Vundle bundles!
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'bling/vim-airline'
-Bundle 'eiginn/netrw'
-Bundle 'ctrlpvim/ctrlp.vim'
-"Bundle 'Shougo/unite.vim'
-Bundle 'tpope/vim-vinegar'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'mattn/emmet-vim'
-Bundle 'mitsuhiko/vim-jinja'
-"Bundle 'klen/python-mode'
-Bundle 'majutsushi/tagbar'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'eiginn/netrw'
+Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'Shougo/unite.vim'
+Plugin 'tpope/vim-vinegar'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mattn/emmet-vim'
+Plugin 'mitsuhiko/vim-jinja'
+"Plugin 'klen/python-mode'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 
