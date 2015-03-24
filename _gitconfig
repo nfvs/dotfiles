@@ -37,6 +37,7 @@
     mt = mergetool
     dl = "!git ll -1"  # changed files of last commit
     dlc = diff --cached HEAD^  # diff of last commit
+    dtlc = difftool --cached HEAD^  # diff of last commit
 
     # Grep
     gr = grep -Ii
