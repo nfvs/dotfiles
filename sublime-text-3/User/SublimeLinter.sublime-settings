@@ -7,6 +7,17 @@
         "gutter_theme_excludes": [],
         "lint_mode": "background",
         "linters": {
+            "flake8": {
+                "@disable": false,
+                "args": [],
+                "builtins": "",
+                "excludes": [],
+                "ignore": "",
+                "jobs": "1",
+                "max-complexity": -1,
+                "max-line-length": 120,
+                "select": ""
+            },
             "htmltidy": {
                 "@disable": false,
                 "args": [],
@@ -35,7 +46,7 @@
                 "@disable": false,
                 "args": [],
                 "excludes": [],
-                "max-line-length": 120,
+                "max-line-length": 120
             },
             "shellcheck": {
                 "@disable": false,

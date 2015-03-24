@@ -1,11 +1,11 @@
 {
-	"color_scheme": "Packages/User/Solarized (Dark) (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Solarized (Dark) (SL).tmTheme",
 	"default_line_ending": "unix",
 	"font_size": 10,
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Markdown Preview"
+		"Markdown",
+		"Vintage"
 	]
 }

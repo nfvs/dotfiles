@@ -10,12 +10,15 @@
 		"Markdown Preview",
 		"Package Control",
 		"Perforce",
+		"SFTP",
 		"SublimeLinter",
+		"SublimeLinter-flake8",
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-jshint",
-		"SublimeLinter-pep8",
-		"SublimeLinter-pyflakes",
 		"SublimeLinter-shellcheck",
 		"Theme - Flatland"
+	],
+	"repositories":
+	[
 	]
 }
