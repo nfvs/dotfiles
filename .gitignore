@@ -5,3 +5,4 @@ _vim/bundle
 sublime-text-3/**/*.cache
 sublime-text-3/**/*.last-run
 sublime-text-3/User/SFTP.sublime-settings
+sublime-text-3/User/SublimeGit.sublime-settings
