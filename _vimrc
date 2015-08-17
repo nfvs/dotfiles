@@ -17,7 +17,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Vundle bundles!
+
+" Theme
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
+
 Plugin 'bling/vim-airline'
 Plugin 'eiginn/netrw'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -54,7 +58,8 @@ set autochdir
 set background=dark
 " uncomment next line if unable to change terminal colors
 "let g:solarized_termcolors=256
-colorscheme solarized
+"colorscheme solarized
+colorscheme base16-eighties
 
 " indentation (size: 4)
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns

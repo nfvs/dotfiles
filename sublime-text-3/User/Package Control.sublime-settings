@@ -5,18 +5,22 @@
 	],
 	"installed_packages":
 	[
+		"Base16 Color Schemes",
 		"Emmet",
 		"GitGutter",
 		"Markdown Preview",
 		"Package Control",
 		"Perforce",
 		"SFTP",
+		"SublimeCodeIntel",
 		"SublimeLinter",
 		"SublimeLinter-flake8",
 		"SublimeLinter-html-tidy",
 		"SublimeLinter-jshint",
 		"SublimeLinter-shellcheck",
-		"Theme - Flatland"
+		"Sublimerge Pro",
+		"Theme - Flatland",
+		"Theme - Spacegray"
 	],
 	"repositories":
 	[

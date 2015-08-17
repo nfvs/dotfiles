@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/User/SublimeLinter/Solarized (Dark) (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/base16-eighties.dark (SL).tmTheme",
 	"default_line_ending": "unix",
 	"font_size": 10,
 	"hot_exit": false,
@@ -7,5 +7,6 @@
 	[
 		"Markdown",
 		"Vintage"
-	]
+	],
+	"theme": "Spacegray.sublime-theme"
 }
