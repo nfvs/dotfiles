@@ -22,6 +22,8 @@
     b = !git ba
     br = branch
     ba = branch -a
+    bm = branch --merged
+    bd = branch -d
     s = status -b -s
 
     # Log history aliases
