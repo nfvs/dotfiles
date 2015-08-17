@@ -59,7 +59,7 @@ set background=dark
 " uncomment next line if unable to change terminal colors
 "let g:solarized_termcolors=256
 "colorscheme solarized
-colorscheme base16-eighties
+colorscheme base16-ocean
 
 " indentation (size: 4)
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
