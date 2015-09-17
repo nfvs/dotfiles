@@ -34,6 +34,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'mitsuhiko/vim-jinja'
 "Plugin 'klen/python-mode'
 Plugin 'majutsushi/tagbar'
+"Plugin 'nfvs/vim-perforce'
 
 call vundle#end()
 

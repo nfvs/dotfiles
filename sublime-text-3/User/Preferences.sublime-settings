@@ -2,11 +2,10 @@
 	"color_scheme": "Packages/User/SublimeLinter/base16-ocean.dark (SL).tmTheme",
 	"default_line_ending": "unix",
 	"font_size": 10,
-	"hot_exit": false,
+	"hot_exit": true,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Markdown"
-	],
-	"theme": "Spacegray.sublime-theme"
+		"Markdown",
+		"Vintage"
+	]
 }

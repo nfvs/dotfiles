@@ -1,5 +1,10 @@
 {
 	"auto_upgrade_last_run": null,
+	"bootstrapped": true,
+	"channels":
+	[
+		"https://packagecontrol.io/channel_v3.json"
+	],
 	"in_process_packages":
 	[
 	],
@@ -8,18 +13,17 @@
 		"Base16 Color Schemes",
 		"Emmet",
 		"GitGutter",
+		"GitSavvy",
 		"Jinja2",
 		"LESS",
 		"Markdown Preview",
 		"Package Control",
 		"Perforce",
 		"SFTP",
-		"SublimeGit",
 		"SublimeLinter",
 		"SublimeLinter-flake8",
 		"SublimeLinter-jshint",
 		"SublimeLinter-shellcheck",
-		"Sublimerge Pro",
 		"Theme - Flatland",
 		"Theme - Spacegray"
 	],

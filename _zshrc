@@ -86,3 +86,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Disable shared history
+unsetopt share_history
+
+# OSX: fn-arrows
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
