@@ -16,7 +16,15 @@ for file_path in $DOTFILES_ROOT/sublime/Default/*; do
   ln -sfv "$file_path" "$SUBLIME_DIR/Default/$basename" 1>/dev/null
 done
 
-echo "Linking User"
-ln -sfv "$DOTFILES_ROOT/sublime/User" "$SUBLIME_DIR/" 1>/dev/null
+mkdir -p "$SUBLIME_DIR/User"
+for file_path in $DOTFILES_ROOT/sublime/User/*; do
+  [[ -f "$file_path" ]] || continue
+  basename=$(basename "$file_path")
+  echo "Linking User/$basename"
+  ln -sfv "$file_path" "$SUBLIME_DIR/User/$basename" 1>/dev/null
+done
+
+# echo "Linking User"
+# ln -sfv "$DOTFILES_ROOT/sublime/User" "$SUBLIME_DIR/" 1>/dev/null
 
 echo "Done!"
