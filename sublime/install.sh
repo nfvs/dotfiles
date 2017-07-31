@@ -5,14 +5,15 @@ cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 HOME=~
 
-SUBLIME_DIR=~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+source $DOTFILES_ROOT/zsh/functions.zsh
 
+SUBLIME_DIR=~/Library/Application\ Support/Sublime\ Text\ 3/Packages
 
 mkdir -p "$SUBLIME_DIR/Default"
 for file_path in $DOTFILES_ROOT/sublime/Default/*; do
   [[ -f "$file_path" ]] || continue
   basename=$(basename "$file_path")
-  echo "Linking Default/$basename"
+  echo_info "sublime: linking Default/$basename"
   ln -sfv "$file_path" "$SUBLIME_DIR/Default/$basename" 1>/dev/null
 done
 
@@ -20,11 +21,8 @@ mkdir -p "$SUBLIME_DIR/User"
 for file_path in $DOTFILES_ROOT/sublime/User/*; do
   [[ -f "$file_path" ]] || continue
   basename=$(basename "$file_path")
-  echo "Linking User/$basename"
+  echo_info "sublime: linking User/$basename"
   ln -sfv "$file_path" "$SUBLIME_DIR/User/$basename" 1>/dev/null
 done
 
-# echo "Linking User"
-# ln -sfv "$DOTFILES_ROOT/sublime/User" "$SUBLIME_DIR/" 1>/dev/null
-
-echo "Done!"
+echo_success "sublime setup done"

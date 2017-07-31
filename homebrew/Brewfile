@@ -12,7 +12,7 @@ brew 'tmux'
 brew 'reattach-to-user-namespace'
 
 # Install Python utlitlies.
-brew 'python2'
+brew 'python'
 brew 'python3'
 
 # Web

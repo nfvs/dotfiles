@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# set -e
+set -e
 
 cd "$(dirname "$0")"
 DOTFILES_ROOT=$(pwd -P)
@@ -88,7 +88,7 @@ install_dotfiles () {
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '_*' -not -path '*.git*')
   do
     dst="$HOME/.$(basename "${src##*_}")"
-    # echo_info "LINKING $src $dst"
+    echo_info "Linking dotfile $dst"
     link_file "$src" "$dst"
   done
 }
