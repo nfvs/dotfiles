@@ -1,0 +1,136 @@
+# Local/private config goes in the include
+[include]
+        path = ~/.gitconfig.local
+[hub]
+        protocol = https
+
+[alias]
+        co = checkout
+        promote = !$ZSH/bin/git-promote
+        wtf     = !$ZSH/bin/git-wtf
+        rank-contributors = !$ZSH/bin/git-rank-contributors
+        count   = !git shortlog -sn
+
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
+        ui = true
+        pager = true
+
+[core]
+        excludesfile = ~/.gitignore
+        editor = vim
+        autocrl = input
+        pager = less -FRSX
+
+        # Set these on windows:
+        #symlinks = false
+        #filemode = false
+        #autocrlf = true  # only to use CRLF locally on windows
+
+[apply]
+        whitespace = nowarn
+
+[mergetool]
+        keepBackup = false
+
+[help]
+        autocorrect = 1
+
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to suppress warning message
+        default = simple
+
+[color "branch"]
+        current = yellow reverse
+        local = yellow
+        remote = green
+
+[color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old = red bold
+        new = green bold
+
+[color "status"]
+        added = yellow
+        changed = green
+        untracked = cyan
+
+[diff]
+        tool = Kaleidoscope
+
+[difftool]
+        prompt = false
+
+[mergetool]
+        prompt = false
+
+[difftool "p4mergetool"]
+        cmd = p4merge -dl $LOCAL $REMOTE  # ignore line endings
+
+[mergetool "p4mergetool"]
+        cmd = p4merge -dl $BASE $LOCAL $REMOTE $MERGED  # ignore line endings
+
+[mergetool "Kaleidoscope"]
+        cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+        trustexitcode = true
+[merge]
+        tool = Kaleidoscope
+
+[difftool "Kaleidoscope"]
+        cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[alias]
+        cl = clone
+        co = checkout
+        cob = checkout -b
+        ci = commit
+        cia = commit -a
+        ciaa = commit -a --amend
+        b = branch
+        ba = branch -a
+        bm = branch --merged
+        bd = branch -d
+        s = status -b -s
+
+        # Log history aliases
+        ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+        ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+        ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+        lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+
+        # Diff aliases
+        d = diff --stat
+        df = diff --stat
+        dt = difftool
+        mt = mergetool
+        dl = "!git ll -1"  # changed files of last commit
+        dlc = diff --cached HEAD^  # diff of last commit
+        dtlc = difftool --cached HEAD^  # diff of last commit
+
+        # Grep
+        gr = grep -Ii
+        grep = grep -Ii
+
+        # GitHub aliases
+        # ragh upstream <user>/<repo>
+        ra = !git ragh  # default to github
+        ragh = "!f() { git remote add $1 https://github.com/$2.git; }; f"
+        rabb = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
+        rr = remote remove
+
+        # Perforce aliases
+        p4r = p4 rebase
+        p4s = p4 submit
+        p4sp = p4 submit --prepare-p4-only
+        p4cl = !p4 change -i <
+        p4shelve = !p4 shelve -i <
+
+        # Misc
+        la = "!git config -l | grep alias | cut -c 7-"  # List aliases

@@ -1,0 +1,23 @@
+tap 'homebrew/bundle'
+tap 'caskroom/fonts'
+
+# Essentials
+brew 'git'
+brew 'zsh'
+
+# Shell stuff
+brew 'zsh-completions'
+brew 'shellcheck'
+brew 'tmux'
+brew 'reattach-to-user-namespace'
+
+# Install Python utlitlies.
+brew 'python2'
+brew 'python3'
+
+# Web
+brew 'httpie'
+brew 'wget'
+
+# Casks
+cask 'font-menlo-for-powerline'

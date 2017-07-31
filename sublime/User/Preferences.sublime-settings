@@ -1,0 +1,14 @@
+{
+	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Ocean.tmTheme",
+	"default_line_ending": "unix",
+	"hot_exit": true,
+	"ignored_packages":
+	[
+		"Markdown",
+		"Vintage"
+	],
+	"theme": "Boxy Ocean.sublime-theme",
+	"theme_icons_flat": true,
+	"theme_tab_selected_prelined": true,
+	"theme_unified": true
+}

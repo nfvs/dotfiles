@@ -1,7 +1,0 @@
-[ui]
-username = Nuno Santos <nunofvsantos@gmail.com>
-verbose = True
-
-[extensions]
-mq =
-color =
