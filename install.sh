@@ -88,7 +88,6 @@ install_dotfiles () {
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '_*' -not -path '*.git*')
   do
     dst="$HOME/.$(basename "${src##*_}")"
-    echo_info "Linking dotfile $dst"
     link_file "$src" "$dst"
   done
 }
