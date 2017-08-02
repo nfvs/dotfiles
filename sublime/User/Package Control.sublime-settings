@@ -11,6 +11,8 @@
 	"installed_packages":
 	[
 		"A File Icon",
+		"Babel",
+		"Babel Snippets",
 		"Base16 Color Schemes",
 		"Boxy Theme",
 		"Emmet",
@@ -23,8 +25,8 @@
 		"SFTP",
 		"SublimeGit",
 		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-flake8",
-		"SublimeLinter-jshint",
 		"SublimeLinter-shellcheck"
 	],
 	"repositories":
