@@ -1,15 +1,17 @@
-drmui() {
-    docker rmi $@ $(docker images | grep '<none>' | awk '{print $3}');
+#!/usr/bin/env sh
+
+docker-images-dangling() {
+	docker images "$@" --filter "dangling=true"
 }
 
-drmc() {
-	docker ps -a | grep 'weeks ago\|months ago' | awk '{print $1}' | xargs docker rm
+docker-images-dangling-remove() {
+    docker-images-dangling --quiet | xargs docker "$@" rmi;
 }
 
-dockerps() {
-    docker ps | sed -n 2p | awk '{print $1}'
+docker-containers-stopped() {
+	docker ps "$@" -a --filter 'exited=0'
 }
 
-dockerexec() {
-    sudo docker exec -it $(sudo docker ps | sed -n 2p | awk '{print $1}') bash
+docker-containers-stopped-remove() {
+	docker-containers-stopped --quiet | xargs docker "$@" rm;
 }
