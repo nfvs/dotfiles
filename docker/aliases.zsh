@@ -1,11 +1,16 @@
 #!/usr/bin/env sh
 
+docker-cleanup() {
+	docker-images-dangling-remove -f;
+	docker-containers-stopped-remove;
+}
+
 docker-images-dangling() {
 	docker images "$@" --filter "dangling=true"
 }
 
 docker-images-dangling-remove() {
-    docker-images-dangling --quiet | xargs docker "$@" rmi;
+    docker-images-dangling --quiet | xargs docker rmi "$@";
 }
 
 docker-containers-stopped() {
@@ -13,5 +18,5 @@ docker-containers-stopped() {
 }
 
 docker-containers-stopped-remove() {
-	docker-containers-stopped --quiet | xargs docker "$@" rm;
+	docker-containers-stopped --quiet | xargs docker rm "$@";
 }
