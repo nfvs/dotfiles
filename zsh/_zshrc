@@ -1,9 +1,3 @@
-# shortcut to this dotfiles path is $ZSHDOT
-export ZSHDOT=$HOME/.dotfiles
-
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/Code
-
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
 # you'll have access to them in your scripts.
@@ -16,18 +10,18 @@ fi
 typeset -U config_files
 config_files=($ZSHDOT/**/*.zsh)
 
+# load the path files
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
+
 # load oh-my-zsh
 # for file in ${(M)config_files:#*/oh-my-zsh.zsh}
 # do
 #   source $file
 # done
 source $ZSHDOT/zsh/oh-my-zsh.zsh
-
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source $file
-done
 
 # load everything but the path, completion and oh-my-zsh files
 for file in ${${${config_files:#*/path.zsh}:#*/completion.zsh}:#*/oh-my-zsh.zsh}

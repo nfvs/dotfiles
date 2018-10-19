@@ -24,8 +24,9 @@ if has("gui")
     "set guifont=Consolas:h10
     set guifont=Consolas_for_Powerline_FixedD:h10
   elseif has ("mac")
-    set guifont=Menlo\ for\ Powerline:h11
+    "set guifont=Menlo\ for\ Powerline:h11
     "set guifont=Meslo\ LG\ M\ for\ Powerline:h11
+    set guifont=Inconsolata-g\ for\ Powerline:h11
   else
     set guifont=Monospace\ 9
   endif

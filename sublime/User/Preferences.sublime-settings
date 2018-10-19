@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Ocean.tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"default_line_ending": "unix",
 	"font_size": 11,
 	"hot_exit": true,
@@ -8,7 +8,7 @@
 		"Markdown",
 		"Vintage"
 	],
-	"theme": "Boxy Ocean.sublime-theme",
+	"theme": "Default.sublime-theme",
 	"theme_icons_flat": true,
 	"theme_tab_selected_prelined": true,
 	"theme_unified": true
