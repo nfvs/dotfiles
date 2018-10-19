@@ -3,3 +3,8 @@
     email = AUTHOREMAIL
 [credential]
     helper = GIT_CREDENTIAL_HELPER
+
+[diff]
+    tool = Kaleidoscope
+[merge]
+    tool = Kaleidoscope
