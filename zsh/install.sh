@@ -4,8 +4,9 @@ cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 HOME=~
 
-ln -sfh "$DOTFILES_ROOT" $HOME/.dotfiles
-source $DOTFILES_ROOT/zsh/functions.zsh
+ln -fs "$DOTFILES_ROOT" $HOME/.dotfiles
+ln -fs "$HOME/.dotfiles/zsh/_zshenv" $HOME/.zshenv
+source $HOME/.dotfiles/zsh/functions.zsh
 
 # ZSH setup
 if [ ! -d "$HOME/.oh-my-zsh" ] ; then
@@ -29,5 +30,6 @@ mkdir -p $HOME/.zfunctions
 ln -fs "$HOME/.zsh-pure/pure.zsh" $HOME/.zfunctions/prompt_pure_setup
 ln -fs "$HOME/.zsh-pure/async.zsh" $HOME/.zfunctions/async
 
-ln -fs "$DOTFILES_ROOT/zsh/_zshrc" $HOME/.zshrc
+ln -fs "$HOME/.dotfiles/zsh/_zshrc" $HOME/.zshrc
 echo_success "ZSH setup done"
+
