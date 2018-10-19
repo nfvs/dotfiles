@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")/.."
 HOME=~
-DOTFILES_ROOT=$(pwd -P)
+DOTFILES_ROOT="$HOME/.dotfiles"
 
 source $DOTFILES_ROOT/zsh/functions.zsh
 
@@ -43,6 +43,6 @@ setup_gitconfig () {
 }
 
 setup_gitconfig
-ln -sfh "$DOTFILES_ROOT/git/_gitconfig" $HOME/.gitconfig
-ln -sfh "$DOTFILES_ROOT/git/_gitconfig.local" $HOME/.gitconfig.local
+ln -sf "$DOTFILES_ROOT/git/_gitconfig" $HOME/.gitconfig
+ln -sf "$DOTFILES_ROOT/git/_gitconfig.local" $HOME/.gitconfig.local
 echo_success "git setup done"
