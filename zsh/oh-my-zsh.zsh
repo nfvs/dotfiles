@@ -18,7 +18,7 @@ plugins=(
 	tmux
 	docker
 	pip
-	virtualenv
+	#virtualenv
 	virtualenvwrapper
 	# ruby
 	# rvm

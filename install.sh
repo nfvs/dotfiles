@@ -3,10 +3,11 @@
 set -e
 
 cd "$(dirname "$0")"
-DOTFILES_ROOT=$(pwd -P)
+DOTFILES_ROOT=$HOME/.dotfiles
 HOME=~
 
-ln -sfh "$DOTFILES_ROOT" $HOME/.dotfiles
+# Create link to $HOME/.dotfiles
+ln -sf $(pwd -P) "$DOTFILES_ROOT"
 
 source $DOTFILES_ROOT/zsh/functions.zsh
 

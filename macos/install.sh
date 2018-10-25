@@ -8,5 +8,5 @@ DOTFILES_ROOT=$(pwd -P)
 
 source $DOTFILES_ROOT/zsh/functions.zsh
 
-echo_info "› Installing macOS defaults"
-"$DOTFILES_ROOT/macos/set-defaults.sh"
+# echo_info "› Installing macOS defaults"
+# "$DOTFILES_ROOT/macos/set-defaults.sh"

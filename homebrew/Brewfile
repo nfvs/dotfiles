@@ -11,13 +11,11 @@ brew 'shellcheck'
 brew 'tmux'
 brew 'reattach-to-user-namespace'
 
-# Install Python utlitlies.
-brew 'python'
-brew 'python3'
-
 # Web
 brew 'httpie'
 brew 'wget'
 
 # Casks
 cask 'font-menlo-for-powerline'
+cask 'font-inconsolata-g'
+cask 'font-inconsolata-g-for-powerline'

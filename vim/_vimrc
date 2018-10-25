@@ -34,7 +34,7 @@ Plugin 'mitsuhiko/vim-jinja'
 "Plugin 'klen/python-mode'
 Plugin 'majutsushi/tagbar'
 "Plugin 'nfvs/vim-perforce'
-Plugin 'chriskempson/base16-vim'
+Plugin 'mhartington/oceanic-next'
 
 call vundle#end()
 
@@ -60,7 +60,10 @@ set autochdir
 " uncomment next line if unable to change terminal colors
 "let g:solarized_termcolors=256
 " colorscheme solarized
-colorscheme base16-oceanicnext
+if (has("termguicolors"))
+  set termguicolors
+endif
+colorscheme OceanicNext
 
 " indentation (size: 4)
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
@@ -145,6 +148,7 @@ nmap <C-g> :TagbarToggle<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
+let g:airline_theme='oceanicnext'
 
 " Perforce
 let g:perforce_auto_source_dirs = ['/Users/nsantos/Perforce/nsantos_rmbp']
