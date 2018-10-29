@@ -2,6 +2,7 @@
 .*.swp
 vim/_vim/.netrwhist
 vim/_vim/bundle
+vim/_vim/plugged
 git/_gitconfig.local
 sublime/**/*.cache
 sublime/**/*.last-run

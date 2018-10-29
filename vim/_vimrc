@@ -1,128 +1,141 @@
-" Vundle needs to be installed before:
-" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" remove all existing autocmds
+autocmd!
 
-" Use Vim settings, rather than Vi
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+"Plug 'lifepillar/vim-solarized8'
+Plug 'chriskempson/base16-vim'
+"Plug 'mhartington/oceanic-next'
+Plug 'nfvs/oceanic-next'
+"Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'eiginn/netrw'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
+Plug 'w0rp/ale'
+Plug 'mattn/emmet-vim'
+"Plug 'mitsuhiko/vim-jinja'
+"Plug 'klen/python-mode'
+Plug 'ambv/black'
+Plug 'majutsushi/tagbar'
+"Plug 'nfvs/vim-perforce'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'othree/html5.vim'
+call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Basic config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
-
-set fileformats=unix,dos
-
-" Vundle
-" Add this to .profile:
-" export TERM=xterm-256color
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
-
-" Vundle bundles!
-
-" Theme
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'eiginn/netrw'
-Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'Shougo/unite.vim'
-Plugin 'tpope/vim-vinegar'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mattn/emmet-vim'
-Plugin 'mitsuhiko/vim-jinja'
-"Plugin 'klen/python-mode'
-Plugin 'majutsushi/tagbar'
-"Plugin 'nfvs/vim-perforce'
-Plugin 'mhartington/oceanic-next'
-
-call vundle#end()
-
-" re-enable filetype
-filetype plugin indent on
-
-" Default encoding: Utf-8
 set encoding=utf-8
-
-" Disable modelines (why?)
-set modelines=0
-set nomodeline
-set laststatus=2
-
-" syntax
-syntax on
-set cursorline
-
-set autochdir
-
-" Solarized theme
-"set background=dark
-" uncomment next line if unable to change terminal colors
-"let g:solarized_termcolors=256
-" colorscheme solarized
-if (has("termguicolors"))
-  set termguicolors
-endif
-colorscheme OceanicNext
-
-" indentation (size: 4)
-set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
-set tabstop=4     " a hard TAB displays as 4 columns
+set fileformats=unix,dos
+set history=10000
+set updatetime=250
+set expandtab
+set tabstop=4
+set shiftwidth=4
 set softtabstop=4
-set expandtab     " use spaces
-
-" Python specific
-" don't unindent comments
-:inoremap # X<C-H>#
-set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.pyc
-
-" backspace over everything in insert mode
-set backspace=indent,eol,start
-
-" line numbers
-set number
-
-" show cursor position always
-set ruler
-
-" showmatch: Show the matching bracket for the last ')'?
+set autoindent
+set laststatus=2
+set noshowmode
+" set number
 set showmatch
-
-" highlight all search results
+set incsearch
 set hlsearch
+"set cursorline
+set autochdir
+"set ruler
+set cmdheight=1
+set switchbuf=useopen
+"set showtabline=2  " Always show tab bar at the top
+set winwidth=79
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+" set t_ti= t_te=
+" keep more context when scrolling off the end of a buffer
+set scrolloff=3
+" allow backspace over everything in insert mode
+set backspace=indent,eol,start
+set wildmenu
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.pyc
+" Syntax
+syntax on
+filetype plugin indent on
 " clear search string when entering insert mode
 "autocmd InsertEnter * :let @/=""
 "autocmd InsertLeave * :let @/=""
 
-" append a $ character when changing a word
-"set cpoptions+=$
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Theme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set background=dark
+if (has("termguicolors"))
+  set termguicolors
+endif
+"colorscheme solarized8_flat
+"colorscheme base16-oceanicnext
+colorscheme OceanicNext
 
-" If you prefer the Omni-Completion tip window to close when a selection is
-" made, these lines close it on movement in insert mode or when leaving
-" insert mode
-autocmd CursorMovedI * if pumvisible() == 0|silent! pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autocmds
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup vimrcEx
+  " Clear all autocmds in the group
+  autocmd!
 
+  " Indent with 2 spaces only:
+  autocmd FileType haml,yaml,html,sass,json set ai sw=2 sts=2 et
+  autocmd FileType javascript set ai si sw=2 sts=2 et
+
+  " If you prefer the Omni-Completion tip window to close when a selection is
+  " made, these lines close it on movement in insert mode or when leaving
+  " insert mode
+  autocmd CursorMovedI * if pumvisible() == 0|silent! pclose|endif
+  autocmd InsertLeave * if pumvisible() == 0|silent! pclose|endif
+augroup END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Keymaps
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Python: don't unindent comments
+:inoremap # X<C-H>#
+
+nnoremap <leader>n :set number!<CR>
+
+" tagbar
+nmap <leader>t :TagbarToggle<CR>
+
+" vim-signify
+nnoremap <leader>d :SignifyToggle<CR>
+nmap <leader>dn <plug>(signify-next-hunk)
+nmap <leader>dN <plug>(signify-prev-hunk)
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " netrw/vinegar
-let g:netrw_keepdir = 0
 "let g:netrw_liststyle = 3
+let g:netrw_keepdir = 0
 let g:netrw_preview = 1
 let g:netrw_altv = 1
+let g:netrw_fastbrowse = 0  " default=1 leads to duplicate files
 
 " CtrlP
 let g:ctrlp_root_markers = ['pom.xml', '.p4ignore']
+let g:ctrlp_show_hidden = 1
+" Skip files inside gitignore
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Emmet
 let g:user_emmet_leader_key='<C-e>'
-
-" Syntastic
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-"let g:syntastic_debug = 3
 
 " Python-Mode
 let g:pymode_rope = 0
@@ -131,12 +144,31 @@ let g:pymode_lint = 0
 let g:pymode_folding = 0
 let g:pymode_options_colorcolumn = 0
 
+" Ale
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_fixers = {
+\   'python': ['black'],
+\   'javascript': ['eslint'],
+\   'javascript.jsx': ['eslint'],
+\}
+" fix on save; to skip, use `:noa w`
+let g:ale_fix_on_save = 1
+
 " vim-gitgutter
 let g:gitgutter_realtime=0  " don't update in realtime
 let g:gitgutter_eager=0
 " vim-gitgutter: fixes for solarized dark colorscheme
-highlight clear SignColumn
-autocmd ColorScheme * highlight clear SignColumn
+" highlight clear SignColumn
+" autocmd ColorScheme * highlight clear SignColumn
+
+" vim-signify
+let g:signify_disable_by_default = 1
+let g:signify_vcs_list = ['git', 'perforce']
+" let g:signify_line_highlight = 1
+" let g:signify_realtime = 1
+" The following two autosave!
+let g:signify_cursorhold_normal = 0
+let g:signify_cursorhold_insert = 0
 
 " Tagbar
 let g:tagbar_autoclose = 1  " autoclose when selecting
@@ -144,11 +176,25 @@ let g:tagbar_sort = 0  " dont sort
 let g:tagbar_autoshowtag = 1
 let g:tagbar_left = 0
 "let g:tagbar_vertical = 20
-nmap <C-g> :TagbarToggle<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='oceanicnext'
+"let g:airline_theme='oceanicnext'
+let g:airline_section_z = '%t'
+"let g:airline_theme='base16_oceanicnext'
+let g:lightline = {
+    \ 'colorscheme': 'oceanicnext',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'readonly', 'filename', 'modified' ] ],
+    \   'right': [ [ 'lineinfo' ],
+    \              [ 'percent' ],
+    \              [ 'gitbranch', 'fileformat', 'fileencoding', 'filetype' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \ }
 
 " Perforce
 let g:perforce_auto_source_dirs = ['/Users/nsantos/Perforce/nsantos_rmbp']
