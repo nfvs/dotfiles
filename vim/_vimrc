@@ -7,15 +7,17 @@ autocmd!
 call plug#begin('~/.vim/plugged')
 "Plug 'lifepillar/vim-solarized8'
 Plug 'chriskempson/base16-vim'
-"Plug 'mhartington/oceanic-next'
-Plug 'nfvs/oceanic-next'
+Plug 'mhartington/oceanic-next'
 "Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'eiginn/netrw'
+Plug 'mileszs/ack.vim'
+"Plug 'eiginn/netrw'
+"Plug 'ludovicchabant/vim-gutentags'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 " Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'w0rp/ale'
@@ -28,6 +30,7 @@ Plug 'majutsushi/tagbar'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
+"Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -45,6 +48,7 @@ set softtabstop=4
 set autoindent
 set laststatus=2
 set noshowmode
+" set hidden
 " set number
 set showmatch
 set incsearch
@@ -107,7 +111,8 @@ augroup END
 " Python: don't unindent comments
 :inoremap # X<C-H>#
 
-nnoremap <leader>n :set number!<CR>
+" buffers
+nnoremap <leader>b :ls<cr>:b<space>
 
 " tagbar
 nmap <leader>t :TagbarToggle<CR>
@@ -133,9 +138,19 @@ let g:ctrlp_root_markers = ['pom.xml', '.p4ignore']
 let g:ctrlp_show_hidden = 1
 " Skip files inside gitignore
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
 
 " Emmet
 let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 " Python-Mode
 let g:pymode_rope = 0
@@ -170,6 +185,9 @@ let g:signify_vcs_list = ['git', 'perforce']
 let g:signify_cursorhold_normal = 0
 let g:signify_cursorhold_insert = 0
 
+" Gutentags
+let g:gutentags_ctags_tagfile = '.tags'
+
 " Tagbar
 let g:tagbar_autoclose = 1  " autoclose when selecting
 let g:tagbar_sort = 0  " dont sort
@@ -179,9 +197,10 @@ let g:tagbar_left = 0
 
 " Airline
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+"let g:airline#extensions#tagbar#enabled = 0
 "let g:airline_theme='oceanicnext'
-let g:airline_section_z = '%t'
-"let g:airline_theme='base16_oceanicnext'
 let g:lightline = {
     \ 'colorscheme': 'oceanicnext',
     \ 'active': {

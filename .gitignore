@@ -1,8 +1,10 @@
 .DS_Store
 .*.swp
 vim/_vim/.netrwhist
-vim/_vim/bundle
-vim/_vim/plugged
+vim/_vim/bundle/
+vim/_vim/plugged/
+vim/_vim/autoload/
+vim/_vim/black/
 git/_gitconfig.local
 sublime/**/*.cache
 sublime/**/*.last-run
