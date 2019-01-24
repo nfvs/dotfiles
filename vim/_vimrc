@@ -50,7 +50,7 @@ set softtabstop=4
 set autoindent
 set laststatus=2
 set noshowmode
-set hidden
+"set hidden
 set autoread
 set nonumber
 set showmatch
@@ -80,6 +80,19 @@ filetype plugin indent on
 "autocmd InsertEnter * :let @/=""
 "autocmd InsertLeave * :let @/=""
 
+" Undofile
+if exists('+undofile')
+  set undofile
+  setglobal undodir=~/.cache/vim/undo
+  if !isdirectory(&undodir)
+    call mkdir(&undodir, 'p')
+  endif
+
+  " delete more than 90-day-old undo files
+  let s:undofiles = split(globpath(&undodir, '*'), "\n")
+  call filter(s:undofiles, 'getftime(v:val) < localtime() - (60 * 60 * 24 * 90)')
+  call map(s:undofiles, 'delete(v:val)')
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -128,7 +141,6 @@ nnoremap <leader>d :SignifyToggle<CR>
 "nmap ]d <plug>(signify-next-hunk)
 "nmap [d <plug>(signify-prev-hunk)
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -172,9 +184,13 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
 \}
-" fix on save; to skip, use `:noa w`
-let g:ale_fix_on_save = 1
+" fix on save (disabled by default); to skip, use `:noa w`
+let g:ale_fix_on_save = 0
 let g:ale_set_signs = 0
+" to enable per-directory settings:
+" let g:ale_pattern_options = {
+" \  '/home/user/code/*': {'ale_fix_on_save': 1}
+" \}
 
 " vim-gitgutter
 let g:gitgutter_realtime=0  " don't update in realtime
