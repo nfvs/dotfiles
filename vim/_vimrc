@@ -19,6 +19,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 " Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'w0rp/ale'
@@ -178,7 +179,7 @@ let g:pymode_folding = 0
 let g:pymode_options_colorcolumn = 0
 
 " Ale
-let g:ale_lint_on_text_changed = 'normal'
+"let g:ale_lint_on_text_changed = 'normal'
 let g:ale_fixers = {
 \   'python': ['black'],
 \   'javascript': ['eslint'],
