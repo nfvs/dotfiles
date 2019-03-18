@@ -3,6 +3,7 @@
 cd "$(dirname "$0")/.."
 HOME=~
 DOTFILES_ROOT="$HOME/.dotfiles"
+GITCONFIG_LOCAL="$HOME/.gitconfig.local"
 
 source $DOTFILES_ROOT/zsh/functions.zsh
 
@@ -11,14 +12,13 @@ setup_gitconfig () {
 
     setup_local_gitconfig=0
 
-    if [ -f $DOTFILES_ROOT/git/_gitconfig.local ] ;
+    if [ -f $GITCONFIG_LOCAL ] ;
     then
-        printf ""
-        # read -p "gitconfig setup already found, reset? (y/n) " -n 1 REPLY
-        # echo "";
-        # if [[ $REPLY =~ ^[Yy]$ ]]; then
-        #     setup_local_gitconfig=1;
-        # fi
+        read -p "gitconfig setup already found, reset? (y/n) " -n 1 REPLY
+        echo "";
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            setup_local_gitconfig=1;
+        fi
     else
         setup_local_gitconfig=1;
     fi
@@ -36,7 +36,7 @@ setup_gitconfig () {
         printf " - What is your github author email? "
         read -e git_authoremail
 
-        sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" $DOTFILES_ROOT/git/gitconfig.local.example > $DOTFILES_ROOT/git/_gitconfig.local
+        sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" $DOTFILES_ROOT/git/gitconfig.local.example > $GITCONFIG_LOCAL
     fi
 
     echo_success "gitconfig"

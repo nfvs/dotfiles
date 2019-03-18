@@ -104,7 +104,7 @@ if (has("termguicolors"))
 endif
 "colorscheme solarized8_flat
 "colorscheme base16-oceanicnext
-colorscheme OceanicNext
+silent! colorscheme OceanicNext
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocmds
