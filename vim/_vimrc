@@ -33,6 +33,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'cespare/vim-toml'
+Plug 'leafgarland/typescript-vim'
 "Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
@@ -73,7 +74,7 @@ set scrolloff=3
 " allow backspace over everything in insert mode
 set backspace=indent,eol,start
 set wildmenu
-set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.pyc
+set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.pyc,*/.git/*
 " Syntax
 syntax on
 filetype plugin indent on
@@ -159,7 +160,7 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 if executable('rg')
   set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
   let g:ctrlp_use_caching = 0
 endif
 

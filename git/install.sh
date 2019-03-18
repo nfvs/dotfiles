@@ -44,5 +44,6 @@ setup_gitconfig () {
 
 setup_gitconfig
 ln -sf "$DOTFILES_ROOT/git/_gitconfig" $HOME/.gitconfig
+ln -sf "$DOTFILES_ROOT/git/_gitignore" $HOME/.gitignore
 ln -sf "$DOTFILES_ROOT/git/_gitconfig.local" $HOME/.gitconfig.local
 echo_success "git setup done"
