@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -e
 
@@ -94,13 +94,19 @@ install_dotfiles () {
 }
 
 
-# First things first
-xcode-select -p || xcode-select --install;
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    echo "Linux..."
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "MacOS..."
+    # First things first
+    xcode-select -p || xcode-select --install;
 
-# Run installers: first homebrew...
-installer="./homebrew/install.sh"
-echo_info "› Installing ${installer}"
-sh -c "${installer}" < /dev/tty
+    # Run installers: first homebrew...
+    installer="./homebrew/install.sh"
+    echo_info "› Installing ${installer}"
+    sh -c "${installer}" < /dev/tty
+fi
+
 
 # ... then the others
 find . -name install.sh -mindepth 2 | grep -v 'homebrew' | while read installer ; do

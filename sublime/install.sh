@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # Setup a machine for Sublime Text
 
 cd "$(dirname "$0")/.."
@@ -6,6 +6,11 @@ DOTFILES_ROOT=$(pwd -P)
 HOME=~
 
 source $DOTFILES_ROOT/zsh/functions.zsh
+
+if [[ "$OSTYPE" != "darwin"* ]]; then
+    echo "Sublime setup supported only on MacOS, skipping."
+    exit 0
+fi
 
 SUBLIME_DIR=~/Library/Application\ Support/Sublime\ Text\ 3/Packages
 
