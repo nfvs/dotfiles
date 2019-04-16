@@ -113,7 +113,10 @@ augroup vimrcEx
   " Clear all autocmds in the group
   autocmd!
 
-  au BufRead,BufNewFile *.toml setfiletype=toml
+  " Reload file when regaining focus
+  autocmd CursorHold,CursorHoldI,FocusGained,BufEnter * :checktime
+
+  autocmd BufRead,BufNewFile *.toml setfiletype=toml
 
   " Indent with 2 spaces only:
   autocmd FileType haml,yaml,html,sass,scss,json,toml set ai sw=2 sts=2 et
