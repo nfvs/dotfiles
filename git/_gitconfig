@@ -88,6 +88,7 @@
         ci = commit
         cia = commit -a
         ciaa = commit -a --amend
+        ciaar = commit -a --amend --reset-author
         b = branch
         ba = branch -a
         bm = branch --merged
