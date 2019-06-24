@@ -18,6 +18,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sleuth'
 " Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'w0rp/ale'
@@ -153,8 +154,10 @@ nmap <leader>t :TagbarToggle<CR>
 
 " vim-signify
 nnoremap <leader>d :SignifyToggle<CR>
-"nmap ]d <plug>(signify-next-hunk)
-"nmap [d <plug>(signify-prev-hunk)
+nmap ]c <plug>(signify-next-hunk)
+nmap [c <plug>(signify-prev-hunk)
+nnoremap ]C 9999]c
+nnoremap [C 9999[c
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
