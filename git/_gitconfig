@@ -85,6 +85,7 @@
         cl = clone
         co = checkout
         cob = checkout -b
+        cot = checkout --track
         ci = commit
         cia = commit -a
         ciaa = commit -a --amend

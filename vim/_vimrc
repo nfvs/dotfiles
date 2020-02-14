@@ -201,13 +201,14 @@ let g:ale_linters = {
 \   'python': ['flake8'],
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
-\   'typescript': ['tslint'],
+\   'typescript': ['eslint'],
 \}
 let g:ale_fixers = {
-\   'python': ['black'],
+\   'go': ['gofmt'],
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
-\   'typescript': ['tslint'],
+\   'python': ['black'],
+\   'typescript': ['eslint'],
 \}
 " fix on save (disabled by default); to skip, use `:noa w`
 let g:ale_fix_on_save = 0
