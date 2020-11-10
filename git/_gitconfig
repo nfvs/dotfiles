@@ -131,3 +131,8 @@
 
         # Misc
         la = "!git config -l | grep alias | cut -c 7-"  # List aliases
+
+        # Remove all merged branches (except master/dev)
+        bdm = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs -n 1 git branch -d"
+        bmd = bdm
+
