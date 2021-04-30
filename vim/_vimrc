@@ -11,7 +11,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mileszs/ack.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
-Plug '~/.fzf'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
@@ -24,7 +24,7 @@ Plug 'mhinz/vim-signify'
 Plug 'w0rp/ale'
 Plug 'mattn/emmet-vim'
 "Plug 'mitsuhiko/vim-jinja'
-Plug 'ambv/black'
+"Plug 'psf/black', {'branch': 'stable'}
 Plug 'majutsushi/tagbar'
 Plug 'nfvs/vim-perforce'
 Plug 'pangloss/vim-javascript'
@@ -55,6 +55,7 @@ set nonumber
 set showmatch
 set incsearch
 set hlsearch
+set foldlevel=20
 "set cursorline
 set autochdir
 "set ruler
@@ -116,6 +117,7 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.toml setfiletype=toml
 
   " Indent with 2 spaces only:
+  autocmd FileType yaml set foldmethod=indent
   autocmd FileType haml,yaml,html,sass,scss,json,toml set ai sw=2 sts=2 et
   autocmd FileType javascript set ai si sw=2 sts=2 et
 
@@ -198,7 +200,7 @@ let g:pymode_options_colorcolumn = 0
 " Ale
 "let g:ale_lint_on_text_changed = 'normal'
 let g:ale_linters = {
-\   'python': ['flake8'],
+\   'python': ['flake8', 'black'],
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
 \   'typescript': ['eslint'],
@@ -250,19 +252,19 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 "let g:airline#extensions#tagbar#enabled = 0
 "let g:airline_theme='oceanicnext'
-let g:lightline = {
-    \ 'colorscheme': 'oceanicnext',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'readonly', 'filename', 'modified' ] ],
-    \   'right': [ [ 'lineinfo' ],
-    \              [ 'percent' ],
-    \              [ 'gitbranch', 'fileformat', 'fileencoding', 'filetype' ] ]
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'fugitive#head'
-    \ },
-    \ }
+" let g:lightline = {
+"     \ 'colorscheme': 'oceanicnext',
+"     \ 'active': {
+"     \   'left': [ [ 'mode', 'paste' ],
+"     \             [ 'readonly', 'filename', 'modified' ] ],
+"     \   'right': [ [ 'lineinfo' ],
+"     \              [ 'percent' ],
+"     \              [ 'gitbranch', 'fileformat', 'fileencoding', 'filetype' ] ]
+"     \ },
+"     \ 'component_function': {
+"     \   'gitbranch': 'fugitive#head'
+"     \ },
+"     \ }
 
 " Perforce
 "let g:perforce_auto_source_dirs = ['~/Perforce']
