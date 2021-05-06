@@ -30,6 +30,9 @@
         #filemode = false
         #autocrlf = true  # only to use CRLF locally on windows
 
+[pull]
+	rebase = true
+
 [apply]
         whitespace = nowarn
 
@@ -135,4 +138,3 @@
         # Remove all merged branches (except master/dev)
         bdm = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs -n 1 git branch -d"
         bmd = bdm
-
