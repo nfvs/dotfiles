@@ -1,16 +1,26 @@
-# Stash your environment variables in ~/.localrc. This means they'll stay out
-# of your main dotfiles repository (which may be public, like this one), but
-# you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]; then
-  source ~/.localrc
-fi
-
 # shortcut to this dotfiles path is $SHDOT
 export SHDOT=$HOME/.dotfiles
+
+# configuration
+HISTSIZE=10000  # limit history to 10k entries
+HISTCONTROL=ignoredups:erasedups  # ignore history duplicates
+shopt -s histappend  # append to history instead of replacing it
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"  # save to history on every command
+
 
 # load everything
 for file in $(find $SHDOT/bash/ -name "*.sh" ! -name "install.sh")
 do
   source $file
 done
+
+# Prompt
+PS1='\n\u@\h \W$(__git_ps1 " (%s)")\n\$ '
+
+# Stash your environment variables in ~/.localrc. This means they'll stay out
+# of your main dotfiles repository (which may be public, like this one), but
+# you'll have access to them in your scripts.
+if [[ -a ~/.localrc ]]; then
+  source ~/.localrc
+fi
 
