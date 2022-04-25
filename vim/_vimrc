@@ -11,7 +11,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mileszs/ack.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
-Plug 'psf/black', { 'branch': 'stable' }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-vinegar'
@@ -73,6 +72,7 @@ set scrolloff=3
 set backspace=indent,eol,start
 set wildmenu
 set wildignore+=*/tmp/*,*/node_modules/*,*.so,*.swp,*.zip,*.pyc,*/.git/*
+set diffopt+=vertical
 " Syntax
 syntax on
 filetype plugin indent on
