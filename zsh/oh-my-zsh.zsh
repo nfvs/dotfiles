@@ -10,7 +10,7 @@ DEFAULT_USER=`whoami`
 
 plugins=(
     git
-    osx
+    macos
     brew
     node
     npm
