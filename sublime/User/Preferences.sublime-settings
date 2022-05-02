@@ -1,15 +1,17 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/Base16 Color Schemes/Themes/base16-oceanicnext.tmTheme",
 	"default_line_ending": "unix",
 	"font_size": 11,
 	"hot_exit": true,
 	"ignored_packages":
 	[
 		"Markdown",
-		"Vintage"
+		"Vintage",
 	],
-	"theme": "Default.sublime-theme",
+	"theme": "auto",
 	"theme_icons_flat": true,
 	"theme_tab_selected_prelined": true,
-	"theme_unified": true
+	"theme_unified": true,
+	"dark_theme": "Default Dark.sublime-theme",
+	"light_theme": "Default.sublime-theme",
 }

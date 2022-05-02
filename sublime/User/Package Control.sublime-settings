@@ -12,23 +12,21 @@
 	[
 		"A File Icon",
 		"Babel",
-		"Babel Snippets",
 		"Base16 Color Schemes",
 		"Emmet",
 		"GitGutter",
-		"Jinja2",
 		"LESS",
 		"MarkdownPreview",
+		"Oceanic Next Color Scheme",
 		"Package Control",
-		"Perforce",
 		"SFTP",
 		"SublimeGit",
 		"SublimeLinter",
 		"SublimeLinter-eslint",
 		"SublimeLinter-flake8",
-		"SublimeLinter-shellcheck"
+		"SublimeLinter-shellcheck",
 	],
 	"repositories":
 	[
-	]
+	],
 }
