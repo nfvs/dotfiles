@@ -7,9 +7,11 @@ DOTFILES_ROOT=$HOME/.dotfiles
 HOME=~
 
 # Create link to $HOME/.dotfiles
-ln -sf $(pwd -P) "$DOTFILES_ROOT"
+if [[ ! -h "$DOTFILES_ROOT" ]]; then
+  ln -sf $(pwd -P) "$DOTFILES_ROOT"
+fi
 
-source $DOTFILES_ROOT/zsh/functions.zsh
+source $DOTFILES_ROOT/bash/functions.sh
 
 link_file () {
   local src=$1 dst=$2
@@ -96,6 +98,10 @@ install_dotfiles () {
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     echo "Linux..."
+    if command -v apt-get &> /dev/null; then
+      sudo apt-get install -y curl git zsh tmux
+    fi
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/denysdovhan/oceanic-next-gnome-terminal/master/oceanic-next.bash)"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo "MacOS..."
     # First things first
@@ -109,7 +115,7 @@ fi
 
 
 # ... then the others
-find . -name install.sh -mindepth 2 | grep -v 'homebrew' | while read installer ; do
+find . -mindepth 2 -name install.sh | grep -v 'homebrew' | while read installer ; do
 	echo_info "› Installing ${installer}"
 	sh -c "${installer}" < /dev/tty
 done

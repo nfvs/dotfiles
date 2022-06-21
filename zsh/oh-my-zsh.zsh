@@ -27,4 +27,8 @@ plugins=(
     # bundler
 )
 
+# if [[ "$OSTYPE" == "linux-gnu" ]]; then
+#     echo "Linux...";
+# fi
+
 source $ZSH/oh-my-zsh.sh

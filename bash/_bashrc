@@ -9,7 +9,7 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"  # save to history on every command
 
 
 # load everything
-for file in $(find $SHDOT/bash/ -name "*.sh" ! -name "install.sh")
+for file in $(find $SHDOT/bash/ -name "*.sh" ! -name "install.sh" ! -name "_bashrc")
 do
   source $file
 done
@@ -24,3 +24,4 @@ if [[ -a ~/.localrc ]]; then
   source ~/.localrc
 fi
 
+source $HOME/.bashrc.orig

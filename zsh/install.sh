@@ -4,13 +4,12 @@ cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 HOME=~
 
-ln -fs "$DOTFILES_ROOT" $HOME/.dotfiles
 ln -fs "$HOME/.dotfiles/zsh/_zshenv" $HOME/.zshenv
 source $HOME/.dotfiles/zsh/functions.zsh
 
 # ZSH setup
 if [ ! -d "$HOME/.oh-my-zsh" ] ; then
-    git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+    git clone https://github.com/ohmyzsh/ohmyzsh.git "$HOME/.oh-my-zsh"
     echo_success "Oh-My-ZSH installed"
 else
     (cd $HOME/.oh-my-zsh; git pull)
@@ -19,7 +18,7 @@ fi
 
 # Install themes
 if [ ! -d "$HOME/.zsh-pure" ] ; then
-    git clone git://github.com/sindresorhus/pure.git "$HOME/.zsh-pure"
+    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh-pure"
     echo_success "ZSH Pure installed"
 else
     (cd $HOME/.zsh-pure; git pull)
