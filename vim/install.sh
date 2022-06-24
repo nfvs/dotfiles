@@ -3,8 +3,16 @@
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
-if [ ! -f ~/.vim/autoload/plug.vim ] ; then
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+# Create the symlink immediately so that vim-plug gets installed in the correct place
+if [ ! -h $HOME/.vim ]; then
+    if [ -d $HOME/.vim ]; then
+        cp -R $HOME/.vim $HOME/.vim.backup
+    fi
+    ln -s $DOTFILES_ROOT/vim/_vim $HOME/.vim
+fi
+
+if [ ! -f $HOME/.vim/autoload/plug.vim ] ; then
+    curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 

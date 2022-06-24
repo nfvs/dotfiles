@@ -1,21 +1,28 @@
-tap 'homebrew/bundle'
-tap 'caskroom/fonts'
+tap "homebrew/cask"
 
 # Essentials
 brew 'git'
 brew 'zsh'
 
 # Shell stuff
-brew 'zsh-completions'
+brew 'fzf'
+brew 'reattach-to-user-namespace'
 brew 'shellcheck'
 brew 'tmux'
-brew 'reattach-to-user-namespace'
+brew 'zsh-completions'
 
 # Web
 brew 'httpie'
 brew 'wget'
 
+# Dev
+brew 'diffutils'
+brew 'neovim'
+brew 'vim'
+
 # Casks
-cask 'font-menlo-for-powerline'
-cask 'font-inconsolata-g'
-cask 'font-inconsolata-g-for-powerline'
+cask 'appcleaner'
+cask 'bitwarden'
+cask 'rectangle'
+cask 'spotify'
+cask 'the-unarchiver'
