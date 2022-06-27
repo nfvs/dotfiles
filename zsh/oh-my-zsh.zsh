@@ -19,6 +19,7 @@ plugins=(
     docker
     pip
     kubectl
+    rust
     # virtualenv
     # virtualenvwrapper
     # ruby
