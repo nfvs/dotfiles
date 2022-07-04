@@ -5,32 +5,34 @@ autocmd!
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-Plug 'chriskempson/base16-vim'
-Plug 'mhartington/oceanic-next'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mileszs/ack.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'mitsuhiko/vim-jinja'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'psf/black', {'branch': 'stable'}
+Plug 'cespare/vim-toml'
+Plug 'chriskempson/base16-vim'
+Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-sleuth'
-Plug 'mhinz/vim-signify'
-Plug 'dense-analysis/ale'
-Plug 'mattn/emmet-vim'
-"Plug 'mitsuhiko/vim-jinja'
-"Plug 'psf/black', {'branch': 'stable'}
-Plug 'majutsushi/tagbar'
-Plug 'nfvs/vim-perforce'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'othree/html5.vim'
-Plug 'cespare/vim-toml'
 Plug 'leafgarland/typescript-vim'
+Plug 'majutsushi/tagbar'
+Plug 'mattn/emmet-vim'
+Plug 'mhartington/oceanic-next'
+Plug 'mhinz/vim-signify'
+Plug 'mileszs/ack.vim'
+Plug 'mxw/vim-jsx'
+Plug 'nfvs/vim-perforce'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'rust-lang/rust.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -140,6 +142,12 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Keymaps
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Move up and down in autocomplete with <c-j> and <c-k>
+" inoremap <expr> <c-j> ("\<C-n>")
+" inoremap <expr> <c-k> ("\<C-p>")
+inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
+
 " Python: don't unindent comments
 :inoremap # X<C-H>#
 
@@ -160,6 +168,11 @@ nmap ]c <plug>(signify-next-hunk)
 nmap [c <plug>(signify-prev-hunk)
 nnoremap ]C 9999]c
 nnoremap [C 9999[c
+
+" ALE
+nnoremap <silent> gd :ALEGoToDefinition<CR>
+nnoremap <silent> gr :ALEFindReferences<CR>
+nnoremap <silent> K :ALEHover<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -204,6 +217,7 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
 \   'typescript': ['eslint'],
+\   'rust': ['analyzer'],
 \}
 let g:ale_fixers = {
 \   'go': ['gofmt'],
@@ -211,14 +225,39 @@ let g:ale_fixers = {
 \   'javascript.jsx': ['eslint'],
 \   'python': ['black'],
 \   'typescript': ['eslint'],
+\   'rust': ['rustfmt'],
 \}
 " fix on save (disabled by default); to skip, use `:noa w`
 let g:ale_fix_on_save = 0
 let g:ale_set_signs = 0
+let g:ale_completion_enabled = 1
+let g:ale_floating_preview = 1
+let g:ale_hover_cursor = 0
+" set completeopt=menu,menuone,preview,noselect,noinsert
+" let g:ale_disable_lsp = 1  " integration with coc
 " to enable per-directory settings:
 " let g:ale_pattern_options = {
 " \  '/home/user/code/*': {'ale_fix_on_save': 1}
 " \}
+
+" CoC
+" GoTo code navigation.
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+" nnoremap <silent> K :call ShowDocumentation()<CR>
+
+" function! ShowDocumentation()
+"   if CocAction('hasProvider', 'hover')
+"     call CocActionAsync('doHover')
+"   else
+"     call feedkeys('K', 'in')
+"   endif
+" endfunction
+
 
 " vim-gitgutter
 let g:gitgutter_realtime=0  " don't update in realtime
