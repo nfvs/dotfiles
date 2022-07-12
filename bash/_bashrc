@@ -24,4 +24,3 @@ if [[ -a ~/.localrc ]]; then
   source ~/.localrc
 fi
 
-source $HOME/.bashrc.orig
