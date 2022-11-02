@@ -228,6 +228,7 @@ let g:ale_set_signs = 0
 let g:ale_completion_enabled = 1
 let g:ale_floating_preview = 1
 let g:ale_hover_cursor = 0
+let g:ale_rust_cargo_use_clippy = 1
 " set completeopt=menu,menuone,preview,noselect,noinsert
 " let g:ale_disable_lsp = 1  " integration with coc
 " to enable per-directory settings:

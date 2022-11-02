@@ -8,25 +8,14 @@ export ZSH=$HOME/.oh-my-zsh
 
 DEFAULT_USER=`whoami`
 
-plugins=(
-    git
-    macos
-    brew
-    node
-    npm
-    python
-    tmux
-    docker
-    pip
-    kubectl
-    rust
-    # virtualenv
-    # virtualenvwrapper
-    # ruby
-    # rvm
-    # rails
-    # bundler
-)
+# Enable in `~/.localrc`
+# plugins=(
+#     docker
+#     git
+#     pip
+#     rust
+#     tmux
+# )
 
 # if [[ "$OSTYPE" == "linux-gnu" ]]; then
 #     echo "Linux...";
