@@ -87,7 +87,7 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  # _<fileanme> -> .<filename>
+  # _<fileaname> -> .<filename>
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '_*' -not -path '*.git*')
   do
     dst="$HOME/.$(basename "${src##*_}")"

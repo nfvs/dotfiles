@@ -11,6 +11,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
+unsetopt SHARE_HISTORY
+
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP
 setopt NO_LIST_BEEP
@@ -27,7 +29,6 @@ setopt COMPLETE_IN_WORD
 
 # setopt APPEND_HISTORY # adds history
 setopt INC_APPEND_HISTORY  # adds history incrementally...
-setopt SHARE_HISTORY  # ...and share it across sessions
 setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 setopt HIST_REDUCE_BLANKS
 
