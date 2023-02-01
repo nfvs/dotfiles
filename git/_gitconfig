@@ -138,3 +138,8 @@
         # Remove all merged branches (except master/dev)
         bdm = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs -n 1 git branch -d"
         bmd = bdm
+
+        # Gone: local branches with no tracking remote branches
+        bg = "!git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}'"
+        bdg = "!git bg | xargs git branch -d"
+        bDg = "!git bg | xargs git branch -D"
