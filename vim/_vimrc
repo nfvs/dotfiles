@@ -225,6 +225,7 @@ let g:ale_fixers = {
 \}
 " fix on save (disabled by default); to skip, use `:noa w`
 let g:ale_fix_on_save = 0
+let g:ale_set_loclist = 1
 let g:ale_set_signs = 0
 let g:ale_completion_enabled = 1
 let g:ale_floating_preview = 1
