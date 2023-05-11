@@ -1,0 +1,15 @@
+# [Read every time]
+# This file is always sourced, so it should set environment variables which need to be updated frequently (eg. PATH)
+
+
+# Load local RC files
+LOCAL_RC=(
+    "$HOME/.localenv"
+)
+for RC_FILE in "${LOCAL_RC[@]}"
+do
+    if [ -f "$RC_FILE" ]; then
+        # shellcheck source=/dev/null
+        source "$RC_FILE"
+    fi
+done

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =2
+let g:netrw_dirhist_2='/Users/nsantos/Code/dotfiles/zsh'
+let g:netrw_dirhist_1='/Users/nsantos/Code/dotfiles'
+let g:netrw_dirhist_0='/Users/nsantos/Code/dotfiles/fish'
+let g:netrw_dirhist_9='/Users/nsantos/.local'
+let g:netrw_dirhist_8='/Users/nsantos/Code/dotfiles/zsh'
+let g:netrw_dirhist_7='/Users/nsantos/Code/dotfiles'
+let g:netrw_dirhist_6='scp://ukdc-vm/'
+let g:netrw_dirhist_5='/Users/nsantos/Code/docker-anyconnect-proxy'
+let g:netrw_dirhist_4='/Users/nsantos/Nvidia/git/ov-clientlib-logparser-rust/src'
+let g:netrw_dirhist_3='/Users/nsantos/Nvidia/git/ov-clientlib-logparser-rust/logs'

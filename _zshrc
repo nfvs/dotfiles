@@ -1,5 +1,24 @@
-DEFAULT_USER=`whoami`
+# [Read when interactive]
+# Eg. prompt, command completion, aliases, history, etc
 
+OH_MY_ZSH="$HOME/.oh-my-zsh"
+
+# Load local RC files
+LOCAL_RC=(
+    "$HOME/.zshrc.local"
+    "$HOME/.localrc"
+)
+for RC_FILE in "${LOCAL_RC[@]}"
+do
+    if [ -f "$RC_FILE" ]; then
+        # shellcheck source=/dev/null
+        source "$RC_FILE"
+    fi
+done
+
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
+
+# Config
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
@@ -7,9 +26,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 unsetopt SHARE_HISTORY
 
@@ -46,8 +65,6 @@ bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
 
-# OSX: fn-arrows
-# bindkey "^[[1~" beginning-of-line
-# bindkey "^[[4~" end-of-line
-# bindkey '^[[H' beginning-of-line
-# bindkey '^[[F' end-of-line
+# Pure prompt
+autoload -U promptinit; promptinit
+prompt pure

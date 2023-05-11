@@ -1,0 +1,5 @@
+Host *
+    ForwardAgent yes
+
+Host *-tmux
+    RemoteCommand tmux new -A -s default

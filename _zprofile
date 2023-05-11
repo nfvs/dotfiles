@@ -1,0 +1,5 @@
+# [Read at login]
+# For commands and variables which should be set once or which don't need to be updated frequently
+#  * environment variables to configure tools (flags for compilation, data folder location, etc.)
+#  * configuration which execute commands (which might take some time)
+# Reload: `exec zsh --login

@@ -3,6 +3,8 @@ tap "homebrew/cask"
 # Essentials
 brew 'git'
 brew 'zsh'
+brew 'coreutils'
+brew 'ripgrep'
 
 # Shell stuff
 brew 'fzf'
@@ -16,7 +18,7 @@ brew 'httpie'
 brew 'wget'
 
 # Dev
-brew 'diffutils'
+brew 'difftastic'
 brew 'neovim'
 brew 'vim'
 
