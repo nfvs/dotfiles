@@ -119,7 +119,7 @@ install_dotfiles () {
         dst="$HOME/.$dst"
 
         if [ ! -f "$dst" ]; then
-            mv "$src" "$dst"
+            mv --backup=existing "$src" "$dst"
             echo_success "moved $src to $dst"
         else
             echo_success "skipped $dst"
@@ -133,7 +133,7 @@ install_dotfiles () {
 
     # Fish
     mkdir -p "$HOME/.config/fish"
-    link_file "$DOTFILES_ROOT/config.fish" "$HOME/.config/fish"
+    link_file "$DOTFILES_ROOT/config.fish" "$HOME/.config/fish/config.fish"
 }
 
 install_oh_my_zsh () {
@@ -153,7 +153,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     # Install ZSH Pure prompt
     mkdir -p "$HOME/.zsh"
-    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+    if [ ! -d "$HOME/.zsh/pure" ]; then
+        git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+    fi
 
 
     # if command -v apt-get &> /dev/null; then
