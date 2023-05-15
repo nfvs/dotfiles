@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+
+alias l="ls -AvlhF --color=always --time-style=long-iso --group-directories-first"
+alias ll="ls -AvhF --color=always --time-style=long-iso --group-directories-first"
+
+docker_cleanup() {
+	docker_images_dangling_remove -f;
+	docker_containers_stopped_remove;
+}
+
+docker_images_dangling() {
+	docker images "$@" --filter "dangling=true"
+}
+
+docker_images_dangling_remove() {
+    docker_images_dangling --quiet | xargs docker rmi "$@";
+}
+
+docker_containers_stopped() {
+	docker ps "$@" -a --filter 'exited=0'
+}
+
+docker_containers_stopped_remove() {
+	docker_containers_stopped --quiet | xargs docker rm "$@";
+}

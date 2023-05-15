@@ -1,5 +1,10 @@
+Include /Users/nsantos/.colima/ssh_config
+
+Include ~/.ssh/nvidia_config
+
 Host *
     ForwardAgent yes
 
 Host *-tmux
     RemoteCommand tmux new -A -s default
+
