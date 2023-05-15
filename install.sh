@@ -151,6 +151,11 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     
     install_oh_my_zsh
 
+    # Install ZSH Pure prompt
+    mkdir -p "$HOME/.zsh"
+    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+
+
     # if command -v apt-get &> /dev/null; then
     #   sudo apt-get install -y curl git zsh tmux
     # fi
