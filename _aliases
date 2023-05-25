@@ -2,6 +2,7 @@
 
 alias l="ls -AvlhF --color=always --time-style=long-iso --group-directories-first"
 alias ll="ls -AvhF --color=always --time-style=long-iso --group-directories-first"
+alias venv="source .venv/bin/activate"
 
 docker_cleanup() {
 	docker_images_dangling_remove -f;

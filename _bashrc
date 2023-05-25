@@ -8,19 +8,19 @@ shopt -s histappend  # append to history instead of replacing it
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"  # save to history on every command
 
 
-# load everything
-for file in $(find $SHDOT/bash/ -name "*.sh" ! -name "install.sh" ! -name "_bashrc")
-do
-  source $file
-done
-
 # Prompt
-PS1='\n\u@\h \W$(__git_ps1 " (%s)")\n\$ '
+# PS1='\n\u@\h \W$(__git_ps1 " (%s)")\n\$ '
 
-# Stash your environment variables in ~/.localrc. This means they'll stay out
-# of your main dotfiles repository (which may be public, like this one), but
-# you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]; then
-  source ~/.localrc
-fi
-
+# Load local RC files
+LOCAL_RC=(
+    "$HOME/.bashrc.local"
+    "$HOME/.localrc"
+    "$HOME/.localenv"
+)
+for RC_FILE in "${LOCAL_RC[@]}"
+do
+    if [ -f "$RC_FILE" ]; then
+        # shellcheck source=/dev/null
+        source "$RC_FILE"
+    fi
+done
