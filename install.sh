@@ -134,6 +134,10 @@ install_dotfiles () {
     # Fish
     mkdir -p "$HOME/.config/fish"
     link_file "$DOTFILES_ROOT/config.fish" "$HOME/.config/fish/config.fish"
+
+    # Neovim
+    mkdir -p "$HOME/.config/nvim"
+    link_file "$DOTFILES_ROOT/nvim_init.vim" "$HOME/.config/nvim/init.vim"
 }
 
 install_oh_my_zsh () {
