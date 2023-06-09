@@ -140,6 +140,6 @@
         bmd = bdm
 
         # Gone: local branches with no tracking remote branches
-        bg = "!git fetch --all --prune; git branch -vv | awk '/: gone]/{print $1}'"
+        bg = "!git fetch --all --prune --quiet; git branch -vv | awk '/: gone]/{print $1}'"
         bdg = "!git bg | xargs git branch -d"
         bDg = "!git bg | xargs git branch -D"
