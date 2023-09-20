@@ -18,6 +18,7 @@ Plug 'mileszs/ack.vim'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -77,6 +78,11 @@ filetype plugin indent on
 "autocmd InsertEnter * :let @/=""
 "autocmd InsertLeave * :let @/=""
 
+" Vim seems to have issues with `screen-256color`
+if !has('nvim') && &term =~ 'screen'
+  set term=xterm-256color
+endif
+
 " Undofile
 if exists('+undofile')
   set undofile
@@ -100,6 +106,7 @@ endif
 "colorscheme solarized8_flat
 "silent! colorscheme OceanicNext
 silent! colorscheme base16-oceanicnext
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Autocmds
@@ -208,7 +215,7 @@ let g:pymode_options_colorcolumn = 0
 " Ale
 "let g:ale_lint_on_text_changed = 'normal'
 let g:ale_linters = {
-\   'python': ['flake8', 'black'],
+\   'python': ['flake8', 'pydocstyle'],
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
 \   'typescript': ['eslint'],
@@ -219,7 +226,7 @@ let g:ale_fixers = {
 \   'go': ['gofmt'],
 \   'javascript': ['eslint'],
 \   'javascript.jsx': ['eslint'],
-\   'python': ['black'],
+\   'python': ['black', 'isort'],
 \   'typescript': ['eslint'],
 \   'rust': ['rustfmt'],
 \}
@@ -231,6 +238,9 @@ let g:ale_completion_enabled = 1
 let g:ale_floating_preview = 1
 let g:ale_hover_cursor = 0
 let g:ale_rust_cargo_use_clippy = 1
+let g:ale_yaml_yamllint_options='-d "{extends: relaxed, rules: {line-length: disable}}"'
+
+
 " set completeopt=menu,menuone,preview,noselect,noinsert
 " let g:ale_disable_lsp = 1  " integration with coc
 " to enable per-directory settings:

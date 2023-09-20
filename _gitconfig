@@ -84,18 +84,29 @@
 
 [alias]
         cl = clone
-        co = checkout
-        cob = checkout -b
-        cot = checkout --track
+
+        # commit
         ci = commit
         cia = commit -a
         ciaa = commit -a --amend --date=now
         ciaar = commit -a --amend --reset-author
-        b = branch
-        ba = branch -a
-        bm = branch --merged
-        bd = branch -d
+
+        # branch
+        b = branch --sort=-committerdate
+        bs = for-each-ref --sort='-committerdate:iso8601' --format=' %(committerdate:relative)%09%(refname:short)' refs/heads
+        ba = b --all
+        bm = b --merged
+        bd = b --delete
+        bv = b -vv
+
+        # status
         s = status -b -s
+
+        # checkout
+        co = checkout
+        cob = checkout -b
+        cot = checkout --track
+        cb = !git checkout $(git b | fzf | tr -d '[:space:]')
 
         # Log history aliases
         ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
