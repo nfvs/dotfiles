@@ -7,9 +7,9 @@ HISTCONTROL=ignoredups:erasedups  # ignore history duplicates
 shopt -s histappend  # append to history instead of replacing it
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"  # save to history on every command
 
-
 # Prompt
 # PS1='\n\u@\h \W$(__git_ps1 " (%s)")\n\$ '
+PS1='\n\u@\h \W\n\$ '
 
 # Load local RC files
 LOCAL_RC=(
