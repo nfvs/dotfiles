@@ -1,6 +1,4 @@
 # Local/private config goes in the include
-[include]
-        path = ~/.gitconfig.local
 [hub]
         protocol = https
 
@@ -91,7 +89,7 @@
         cot = checkout --track
         ci = commit
         cia = commit -a
-        ciaa = commit -a --amend
+        ciaa = commit -a --amend --date=now
         ciaar = commit -a --amend --reset-author
         b = branch
         ba = branch -a
@@ -143,3 +141,6 @@
         bg = "!git fetch --all --prune --quiet; git branch -vv | awk '/: gone]/{print $1}'"
         bdg = "!git bg | xargs git branch -d"
         bDg = "!git bg | xargs git branch -D"
+
+[include]
+        path = ~/.gitconfig.local
