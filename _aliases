@@ -2,25 +2,39 @@
 
 alias l="ls -AvlhF --color=always --time-style=long-iso --group-directories-first"
 alias ll="ls -AvhF --color=always --time-style=long-iso --group-directories-first"
-alias venv="source .venv/bin/activate"
 
-docker_cleanup() {
+function docker_cleanup() {
 	docker_images_dangling_remove -f;
 	docker_containers_stopped_remove;
 }
 
-docker_images_dangling() {
+function docker_images_dangling() {
 	docker images "$@" --filter "dangling=true"
 }
 
-docker_images_dangling_remove() {
+function docker_images_dangling_remove() {
     docker_images_dangling --quiet | xargs docker rmi "$@";
 }
 
-docker_containers_stopped() {
+function docker_containers_stopped() {
 	docker ps "$@" -a --filter 'exited=0'
 }
 
-docker_containers_stopped_remove() {
+function docker_containers_stopped_remove() {
 	docker_containers_stopped --quiet | xargs docker rm "$@";
+}
+
+function venv() {
+        if [[ -n "$1" ]]; then
+        source "$1/bin/activate"
+    else
+        local FIRST_VENV_BIN_DIR="$(find . -maxdepth 2 -type d -name "bin" -print -quit -exec sed -n "s#^VIRTUAL_ENV=\"\(.*\)\"#\1#p" "{}/activate" \;)";
+        if [[ -n "$FIRST_VENV_BIN_DIR" ]]; then
+            # echo "Activating python virtual environment in ${FIRST_VENV_BIN_DIR%*/bin}"
+            source "$FIRST_VENV_BIN_DIR/activate";
+        else
+            >&2 echo "No python virtual environments found.";
+            return 1
+        fi
+    fi
 }
