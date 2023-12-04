@@ -3,38 +3,59 @@
 alias l="ls -AvlhF --color=always --time-style=long-iso --group-directories-first"
 alias ll="ls -AvhF --color=always --time-style=long-iso --group-directories-first"
 
-function docker_cleanup() {
-	docker_images_dangling_remove -f;
-	docker_containers_stopped_remove;
+docker_cleanup() {
+    docker_images_dangling_remove -f;
+    docker_containers_stopped_remove "$@";
 }
 
-function docker_images_dangling() {
-	docker images "$@" --filter "dangling=true"
+docker_images_dangling() {
+    docker images "$@" --filter "dangling=true"
 }
 
-function docker_images_dangling_remove() {
+docker_images_dangling_remove() {
     docker_images_dangling --quiet | xargs docker rmi "$@";
 }
 
-function docker_containers_stopped() {
-	docker ps "$@" -a --filter 'exited=0'
+docker_containers_stopped() {
+    docker ps "$@" -a --filter 'exited=0'
 }
 
-function docker_containers_stopped_remove() {
-	docker_containers_stopped --quiet | xargs docker rm "$@";
+docker_containers_stopped_remove() {
+    docker_containers_stopped --quiet | xargs docker rm "$@";
 }
 
-function venv() {
-        if [[ -n "$1" ]]; then
-        source "$1/bin/activate"
-    else
-        local FIRST_VENV_BIN_DIR="$(find . -maxdepth 2 -type d -name "bin" -print -quit -exec sed -n "s#^VIRTUAL_ENV=\"\(.*\)\"#\1#p" "{}/activate" \;)";
-        if [[ -n "$FIRST_VENV_BIN_DIR" ]]; then
-            # echo "Activating python virtual environment in ${FIRST_VENV_BIN_DIR%*/bin}"
-            source "$FIRST_VENV_BIN_DIR/activate";
-        else
-            >&2 echo "No python virtual environments found.";
-            return 1
+# Look for the first python venv and activate it
+# If called inside an existing one, will first deactivate it;
+# will only re-activate if inside the path of a different one
+venv() {
+    EXISTING_VENV="$VIRTUAL_ENV"
+
+    # Specified in args?
+    NEW_VENV="$1"
+
+    # ...otherwise look for the first one we can find
+    if [ -z "$NEW_VENV" ]; then
+        _FIRST_VENV_BIN_DIR="$(find "$(pwd -P)" -maxdepth 2 -type d -name "bin" -print -quit -exec sed -n "s|^VIRTUAL_ENV=\"\(.*\)\"|\1|p" "{}/activate" \;)";
+        if [ -n "$_FIRST_VENV_BIN_DIR" ]; then
+            NEW_VENV="${_FIRST_VENV_BIN_DIR%/bin}"
         fi
+    elif [ ! -f "$1/bin/activate" ]; then
+        >&2 echo "No virtual env found in $1.";
+        return 1
+    fi
+
+    # If we're in an existing venv, first deactivate it
+    if [ -n "$EXISTING_VENV" ]; then
+        deactivate;
+    # No existing venv, and no venv found -- error
+    elif [ -z "$NEW_VENV" ]; then
+        >&2 echo "No python virtual environments found.";
+        return 1
+    fi
+
+    # Don't re-activate if we're inside the same one we just de-activated
+    if [ -n "$NEW_VENV" ] && [ "$NEW_VENV" != "$EXISTING_VENV" ]; then
+        # shellcheck source=/dev/null
+        . "$NEW_VENV/bin/activate";
     fi
 }
