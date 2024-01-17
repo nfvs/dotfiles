@@ -2,7 +2,6 @@
 
 alias l="ls -AvlhF --color=always --time-style=long-iso --group-directories-first"
 alias ll="ls -AvhF --color=always --time-style=long-iso --group-directories-first"
-
 docker_cleanup() {
     docker_images_dangling_remove -f;
     docker_containers_stopped_remove "$@";
@@ -59,3 +58,24 @@ venv() {
         . "$NEW_VENV/bin/activate";
     fi
 }
+
+
+_fzf_complete_git() {
+    ARGS="$@"
+    local branches
+    branches=$(git branch -vv | sed 's/^.\{1\}//')
+    # branches=$(git branch -vv)
+    if [[ $ARGS == 'git co'* ]]; then
+        echo "BRANCHES $branches"
+        _fzf_complete --reverse --multi -- "$@" < <(
+            echo $branches
+        )
+    else
+        eval "zle ${fzf_default_completion:-expand-or-complete}"
+    fi
+}
+
+_fzf_complete_git_post() {
+    awk '{print $1}'
+}
+

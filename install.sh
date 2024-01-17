@@ -137,7 +137,9 @@ install_dotfiles () {
 
     # Neovim
     mkdir -p "$HOME/.config/nvim"
+    mkdir -p "$HOME/.config/nvim/after"
     link_file "$DOTFILES_ROOT/nvim_init.vim" "$HOME/.config/nvim/init.vim"
+    link_file "$DOTFILES_ROOT/_vim/after/ftplugin" "$HOME/.config/nvim/after/ftplugin"
 }
 
 install_oh_my_zsh () {

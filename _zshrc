@@ -63,6 +63,7 @@ bindkey '^?' backward-delete-char
 LOCAL_RC=(
     "$HOME/.zshrc.local"
     "$HOME/.localrc"
+    "$HOME/.aliases.local"
 )
 for RC_FILE in "${LOCAL_RC[@]}"
 do
