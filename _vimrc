@@ -240,6 +240,10 @@ let g:ale_hover_cursor = 0
 let g:ale_rust_cargo_use_clippy = 1
 let g:ale_yaml_yamllint_options='-d "{extends: relaxed, rules: {line-length: disable}}"'
 
+" Ale Flake8
+let g:ale_python_flake8_options = '--max-line-length=88 --extend-ignore=E203'
+
+
 
 " set completeopt=menu,menuone,preview,noselect,noinsert
 " let g:ale_disable_lsp = 1  " integration with coc

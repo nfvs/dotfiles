@@ -158,9 +158,8 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     install_oh_my_zsh
 
     # Install ZSH Pure prompt
-    mkdir -p "$HOME/.zsh"
-    if [ ! -d "$HOME/.zsh/pure" ]; then
-        git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+    if [ ! -d "$HOME/.zsh-pure" ]; then
+        git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh-pure"
     fi
 
 

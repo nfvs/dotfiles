@@ -1,7 +1,28 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 alias l="ls -AvlhF --color=always --time-style=long-iso --group-directories-first"
 alias ll="ls -AvhF --color=always --time-style=long-iso --group-directories-first"
+
+_fzf_complete_git() {
+    ARGS="$@"
+    local branches
+    branches=$(git branch -vv | sed 's/^.\{1\}//')
+    # branches=$(git branch -vv)
+    if [[ $ARGS == 'git co'* ]]; then
+        echo "BRANCHES $branches"
+        _fzf_complete --reverse --multi -- "$@" < <(
+            echo $branches
+        )
+    else
+        eval "zle ${fzf_default_completion:-expand-or-complete}"
+    fi
+}
+
+_fzf_complete_git_post() {
+    awk '{print $1}'
+}
+
+
 docker_cleanup() {
     docker_images_dangling_remove -f;
     docker_containers_stopped_remove "$@";
@@ -27,16 +48,19 @@ docker_containers_stopped_remove() {
 # If called inside an existing one, will first deactivate it;
 # will only re-activate if inside the path of a different one
 venv() {
-    EXISTING_VENV="$VIRTUAL_ENV"
+    local existing_venv
+    local new_venv
+    local first_venv_activate
+    existing_venv="${VIRTUAL_ENV}"
 
     # Specified in args?
-    NEW_VENV="$1"
+    new_venv="${1}"
 
     # ...otherwise look for the first one we can find
-    if [ -z "$NEW_VENV" ]; then
-        _FIRST_VENV_BIN_DIR="$(find "$(pwd -P)" -maxdepth 2 -type d -name "bin" -print -quit -exec sed -n "s|^VIRTUAL_ENV=\"\(.*\)\"|\1|p" "{}/activate" \;)";
-        if [ -n "$_FIRST_VENV_BIN_DIR" ]; then
-            NEW_VENV="${_FIRST_VENV_BIN_DIR%/bin}"
+    if [ -z "${new_venv}" ]; then
+        first_venv_activate="$(find "$(pwd -P)" -maxdepth 3 -type f -wholename '*/bin/activate' -exec grep -q "^VIRTUAL_ENV=.*" {} \; -print -quit)";
+        if [ -n "${first_venv_activate}" ]; then
+            new_venv="$(dirname "$(dirname "${first_venv_activate}")")"
         fi
     elif [ ! -f "$1/bin/activate" ]; then
         >&2 echo "No virtual env found in $1.";
@@ -44,38 +68,21 @@ venv() {
     fi
 
     # If we're in an existing venv, first deactivate it
-    if [ -n "$EXISTING_VENV" ]; then
+    if [ -n "${existing_venv}" ]; then
         deactivate;
     # No existing venv, and no venv found -- error
-    elif [ -z "$NEW_VENV" ]; then
+    elif [ -z "${new_venv}" ]; then
         >&2 echo "No python virtual environments found.";
         return 1
     fi
 
     # Don't re-activate if we're inside the same one we just de-activated
-    if [ -n "$NEW_VENV" ] && [ "$NEW_VENV" != "$EXISTING_VENV" ]; then
+    if [ -n "${new_venv}" ] && [ "${new_venv}" != "${existing_venv}" ]; then
         # shellcheck source=/dev/null
-        . "$NEW_VENV/bin/activate";
+        . "${new_venv}/bin/activate";
     fi
 }
 
-
-_fzf_complete_git() {
-    ARGS="$@"
-    local branches
-    branches=$(git branch -vv | sed 's/^.\{1\}//')
-    # branches=$(git branch -vv)
-    if [[ $ARGS == 'git co'* ]]; then
-        echo "BRANCHES $branches"
-        _fzf_complete --reverse --multi -- "$@" < <(
-            echo $branches
-        )
-    else
-        eval "zle ${fzf_default_completion:-expand-or-complete}"
-    fi
+find_largest() {
+    find "${1:-.}" -type f -exec du -ah {} + | sort -h -r
 }
-
-_fzf_complete_git_post() {
-    awk '{print $1}'
-}
-
