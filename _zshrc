@@ -74,6 +74,6 @@ do
 done
 
 # Pure prompt
-fpath+=($HOME/.zsh/pure)
+fpath+=($HOME/.zsh-pure)
 autoload -U promptinit; promptinit
 prompt pure

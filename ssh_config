@@ -2,4 +2,4 @@ Host *
     ForwardAgent yes
 
 Host *-tmux
-    RemoteCommand tmux new-session -A -s default
+    RemoteCommand tmux new-session -A -s 0

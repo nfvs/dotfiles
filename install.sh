@@ -154,7 +154,7 @@ install_oh_my_zsh () {
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     echo_info "Linux"
-    
+
     install_oh_my_zsh
 
     # Install ZSH Pure prompt
@@ -171,12 +171,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo_info "MacOS"
     # First things first
     xcode-select -p > /dev/null || xcode-select --install;
-    
+
     # install brew
     if ! command -v brew &> /dev/null; then
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
-    
+
     brew bundle
 
     install_oh_my_zsh
