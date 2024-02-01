@@ -108,7 +108,6 @@ set background=dark
 if (has("termguicolors"))
   set termguicolors
 endif
-"colorscheme solarized8_flat
 "silent! colorscheme OceanicNext
 silent! colorscheme base16-oceanicnext
 
@@ -274,6 +273,9 @@ let g:ale_python_flake8_options = '--max-line-length=88 --extend-ignore=E203'
 "     call feedkeys('K', 'in')
 "   endif
 " endfunction
+
+" vim-fugitive
+let g:fugitive_summary_format = "%ci || %s"
 
 
 " vim-gitgutter
