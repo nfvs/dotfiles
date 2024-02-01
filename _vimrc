@@ -86,7 +86,11 @@ endif
 " Undofile
 if exists('+undofile')
   set undofile
-  setglobal undodir=~/.cache/vim/undo
+  if has('nvim')
+    setglobal undodir=~/.cache/nvim/undo
+  else
+    setglobal undodir=~/.cache/vim/undo
+  endif
   if !isdirectory(&undodir)
     call mkdir(&undodir, 'p')
   endif
@@ -96,6 +100,7 @@ if exists('+undofile')
   call filter(s:undofiles, 'getftime(v:val) < localtime() - (60 * 60 * 24 * 90)')
   call map(s:undofiles, 'delete(v:val)')
 endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
