@@ -1,6 +1,9 @@
 if status is-interactive
     # Starship prompt (https://starship.rs)
     starship init fish | source
-end
 
-abbr -a -- vim nvim
+    # Use nvim if available
+    if type -q nvim
+        alias vim="nvim"
+    end
+end
