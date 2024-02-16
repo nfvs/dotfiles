@@ -2,8 +2,14 @@ if status is-interactive
     # Starship prompt (https://starship.rs)
     starship init fish | source
 
+    # Aliases
+
     # Use nvim if available
     if type -q nvim
         alias vim="nvim"
     end
+
+    # Don't exit on accidental Ctrl-D; exit on the third one!
+    bind \cd delete-char
+    bind \cd\cd\cd delete-or-exit
 end

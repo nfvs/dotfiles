@@ -6,6 +6,7 @@ keybinds {
     tmux {
         bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "Ctrl a" "Ctrl c" "Esc" { SwitchToMode "Normal"; }
     }
     shared_except "tmux" "locked" {
         bind "Ctrl a" { SwitchToMode "Tmux"; }
