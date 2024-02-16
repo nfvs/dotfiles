@@ -133,7 +133,8 @@ install_dotfiles () {
 
     # Fish
     mkdir -p "$HOME/.config/fish"
-    link_file "$DOTFILES_ROOT/config.fish" "$HOME/.config/fish/config.fish"
+    link_file "$DOTFILES_ROOT/fish_config" "$HOME/.config/fish/config.fish"
+    link_file "$DOTFILES_ROOT/fish_completions" "$HOME/.config/fish/completions"
 
     # Neovim
     mkdir -p "$HOME/.config/nvim"

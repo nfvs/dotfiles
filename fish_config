@@ -1,0 +1,11 @@
+if status is-interactive
+    # Starship prompt (https://starship.rs)
+    starship init fish | source
+end
+
+# set LOCAL_RC \
+#         $HOME/.localenv \
+#         $HOME/.aliases
+# source $HOME/.localrc
+
+# source $HOME/.localenv

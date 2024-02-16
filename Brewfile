@@ -1,5 +1,3 @@
-tap "homebrew/cask"
-
 # Essentials
 brew 'git'
 brew 'zsh'
@@ -12,6 +10,7 @@ brew 'reattach-to-user-namespace'
 brew 'shellcheck'
 brew 'tmux'
 brew 'zsh-completions'
+brew 'fish'
 
 # Web
 brew 'httpie'
