@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 
 set -e
@@ -134,6 +134,7 @@ install_dotfiles () {
     # Fish
     mkdir -p "$HOME/.config/fish"
     link_file "$DOTFILES_ROOT/fish_config" "$HOME/.config/fish/config.fish"
+    link_file "$DOTFILES_ROOT/fish_conf.d" "$HOME/.config/fish/conf.d"
     link_file "$DOTFILES_ROOT/fish_completions" "$HOME/.config/fish/completions"
 
     # Neovim
@@ -152,6 +153,7 @@ install_oh_my_zsh () {
     fi
 }
 
+install_dotfiles
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     echo_info "Linux"
@@ -191,4 +193,3 @@ fi
 # done
 
 
-install_dotfiles

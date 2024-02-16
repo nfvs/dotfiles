@@ -3,9 +3,4 @@ if status is-interactive
     starship init fish | source
 end
 
-# set LOCAL_RC \
-#         $HOME/.localenv \
-#         $HOME/.aliases
-# source $HOME/.localrc
-
-# source $HOME/.localenv
+abbr -a -- vim nvim
