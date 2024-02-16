@@ -1,159 +1,159 @@
 # Local/private config goes in the include
 [hub]
-        protocol = https
+    protocol = https
 
 [commit]
-        cleanup = scissors
+    cleanup = scissors
 
 [color]
-        diff = auto
-        status = auto
-        branch = auto
-        interactive = auto
-        ui = true
-        pager = true
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true
 
 [core]
-        excludesfile = ~/.gitignore
-        editor = vim
-        autocrl = input
-        pager = less -FRSX
+    excludesfile = ~/.gitignore
+    editor = vim
+    autocrl = input
+    pager = less -FRSX
 
-        # Set these on windows:
-        #symlinks = false
-        #filemode = false
-        #autocrlf = true  # only to use CRLF locally on windows
+    # Set these on windows:
+    #symlinks = false
+    #filemode = false
+    #autocrlf = true  # only to use CRLF locally on windows
 
 [pull]
-	rebase = true
+    rebase = true
 
 [apply]
-        whitespace = nowarn
+    whitespace = nowarn
 
 [mergetool]
-        keepBackup = false
+    keepBackup = false
 
 [help]
-        autocorrect = 1
+    autocorrect = 1
 
 [push]
-        # See `git help config` (search for push.default)
-        # for more information on different options of the below setting.
-        #
-        # Setting to git 2.0 default to suppress warning message
-        default = simple
+    # See `git help config` (search for push.default)
+    # for more information on different options of the below setting.
+    #
+    # Setting to git 2.0 default to suppress warning message
+    default = simple
 
 [color "branch"]
-        current = yellow reverse
-        local = yellow
-        remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 
 [color "diff"]
-        meta = yellow bold
-        frag = magenta bold
-        old = red bold
-        new = green bold
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
 
 [color "status"]
-        added = yellow
-        changed = green
-        untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
 
 [difftool]
-        prompt = false
+    prompt = false
 
 [mergetool]
-        prompt = false
+    prompt = false
 
 [difftool "p4mergetool"]
-        cmd = p4merge -dl $LOCAL $REMOTE  # ignore line endings
+    cmd = p4merge -dl $LOCAL $REMOTE  # ignore line endings
 
 [mergetool "p4mergetool"]
-        cmd = p4merge -dl $BASE $LOCAL $REMOTE $MERGED  # ignore line endings
+    cmd = p4merge -dl $BASE $LOCAL $REMOTE $MERGED  # ignore line endings
 
 [mergetool "Kaleidoscope"]
-        cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-        trustexitcode = true
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustexitcode = true
 
 [difftool "Kaleidoscope"]
-        cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 
 [alias]
-        co = checkout
-        cl = clone
+    co = checkout
+    cl = clone
 
-        # commit
-        ci = commit
-        cia = commit -a
-        ciaa = commit -a --amend --date=now
-        ciaar = commit -a --amend --reset-author
+    # commit
+    ci = commit
+    cia = commit -a
+    ciaa = commit -a --amend --date=now
+    ciaar = commit -a --amend --reset-author
 
-        # branch
-        b = branch --sort=-committerdate
-        bs = for-each-ref --sort='-committerdate:iso8601' --format=' %(committerdate:relative)%09%(refname:short)' refs/heads
-        ba = b --all
-        bm = b --merged
-        bd = b --delete
-        bv = b -vv
+    # branch
+    b = branch --sort=-committerdate
+    bs = for-each-ref --sort='-committerdate:iso8601' --format=' %(committerdate:relative)%09%(refname:short)' refs/heads
+    ba = b --all
+    bm = b --merged
+    bd = b --delete
+    bv = b -vv
 
-        # status
-        s = status -b -s
+    # status
+    s = status -b -s
 
-        # checkout
-        co = checkout
-        cob = checkout -b
-        cot = checkout --track
-        cb = !git checkout $(git b | fzf | tr -d '[:space:]')
+    # checkout
+    co = checkout
+    cob = checkout -b
+    cot = checkout --track
+    cb = !git checkout $(git b | fzf | tr -d '[:space:]')
 
-        # Log history aliases
-        ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-        ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-        ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-        lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    # Log history aliases
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 
-        # Diff aliases
-        d = diff --stat
-        df = diff --stat
-        dt = difftool
-        mt = mergetool
-        dl = "!git ll -1"  # changed files of last commit
-        dlc = diff HEAD^  # diff of last commit
-        dtlc = difftool HEAD^  # diff of last commit
+    # Diff aliases
+    d = diff --stat
+    df = diff --stat
+    dt = difftool
+    mt = mergetool
+    dl = "!git ll -1"  # changed files of last commit
+    dlc = diff HEAD^  # diff of last commit
+    dtlc = difftool HEAD^  # diff of last commit
 
-        # Grep
-        gr = grep -Ii
-        grep = grep -Ii
+    # Grep
+    gr = grep -Ii
+    grep = grep -Ii
 
-        # GitHub aliases
-        # ragh upstream <user>/<repo>
-        ra = !git ragh  # default to github
-        ragh = "!f() { git remote add $1 https://github.com/$2.git; }; f"
-        rabb = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
-        rr = remote remove
+    # GitHub aliases
+    # ragh upstream <user>/<repo>
+    ra = !git ragh  # default to github
+    ragh = "!f() { git remote add $1 https://github.com/$2.git; }; f"
+    rabb = "!f() { git remote add $1 https://bitbucket.org/$2.git; }; f"
+    rr = remote remove
 
-        # Perforce aliases
-        p4r = p4 rebase
-        p4s = p4 submit
-        p4sp = p4 submit --prepare-p4-only
-        p4cl = !p4 change -i <
-        p4shelve = !p4 shelve -i <
+    # Perforce aliases
+    p4r = p4 rebase
+    p4s = p4 submit
+    p4sp = p4 submit --prepare-p4-only
+    p4cl = !p4 change -i <
+    p4shelve = !p4 shelve -i <
 
-        # Misc
-        la = "!git config -l | grep alias | cut -c 7-"  # List aliases
+    # Misc
+    la = "!git config -l | grep alias | cut -c 7-"  # List aliases
 
-        # Remove all merged branches (except master/dev)
-        bdm = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs -n 1 git branch -d"
-        bmd = bdm
+    # Remove all merged branches (except master/dev)
+    bdm = "!git branch --merged | egrep -v '(^\\*|master|dev)' | xargs -n 1 git branch -d"
+    bmd = bdm
 
-        # Gone: local branches with no tracking remote branches
-        bg = "!git fetch --all --prune --quiet; git branch -vv | awk '/: gone]/{print $1}'"
-        bdg = "!git bg | xargs git branch -d"
-        bDg = "!git bg | xargs git branch -D"
+    # Gone: local branches with no tracking remote branches
+    bg = "!git fetch --all --prune --quiet; git branch -vv | awk '/: gone]/{print $1}'"
+    bdg = "!git bg | xargs git branch -d"
+    bDg = "!git bg | xargs git branch -D"
 
 [include]
-        path = ~/.gitconfig.local
+    path = ~/.gitconfig.local
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
