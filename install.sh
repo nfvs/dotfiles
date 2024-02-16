@@ -142,6 +142,10 @@ install_dotfiles () {
     mkdir -p "$HOME/.config/nvim/after"
     link_file "$DOTFILES_ROOT/nvim_init.vim" "$HOME/.config/nvim/init.vim"
     link_file "$DOTFILES_ROOT/_vim/after/ftplugin" "$HOME/.config/nvim/after/ftplugin"
+
+    # Zellij
+    mkdir -p "$HOME/.config/zellij"
+    link_file "$DOTFILES_ROOT/zellij/config.kdl" "$HOME/.config/zellij/config.kdl"
 }
 
 install_oh_my_zsh () {

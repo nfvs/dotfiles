@@ -1,0 +1,34 @@
+keybinds {
+    normal {
+        // Unbind default Tmux prefix; will use "Ctrl a" instead
+        unbind "Ctrl b"
+    }
+    tmux {
+        bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "|" { NewPane "Right"; SwitchToMode "Normal"; }
+    }
+    shared_except "tmux" "locked" {
+        bind "Ctrl a" { SwitchToMode "Tmux"; }
+    }
+    session {
+        bind "Ctrl j" { MoveFocus "Down"; }
+        bind "Ctrl k" { MoveFocus "Up"; }
+    }
+}
+
+plugins {
+    tab-bar { path "tab-bar"; }
+    status-bar { path "status-bar"; }
+    strider { path "strider"; }
+    compact-bar { path "compact-bar"; }
+    session-manager { path "session-manager"; }
+}
+
+// simplified_ui true
+// default_shell "fish"
+// pane_frames false
+// autolayout false
+// theme "default"
+default_layout "compact"
+// default_mode "locked"
+mouse_mode false
