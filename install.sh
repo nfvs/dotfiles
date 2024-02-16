@@ -104,10 +104,22 @@ install_dotfiles () {
     local overwrite_all=false backup_all=false skip_all=false
 
     # _<filename> -> .<filename>
-    for src in $(find -H "$DOTFILES_ROOT" -maxdepth 1 -name '_*' -not -name '_*.example')
+    for src in $(find -H "$DOTFILES_ROOT" -maxdepth 1 -name '_*' -not -name '_*.example' -not -name '_config')
     do
         dst="$HOME/.$(basename "${src##*_}")"
         link_file "$src" "$dst"
+    done
+
+    # _config/<tool>/* -> ~/.config/<tool>/*
+    for subdir in $(find -H "$DOTFILES_ROOT/_config" -mindepth 1 -maxdepth 1 -type d)
+    do
+      subdir="${subdir##*/}"
+      mkdir -p "$HOME/.config/$subdir"
+      for src in $(find -H "$DOTFILES_ROOT/_config/$subdir" -mindepth 1 -maxdepth 1)
+      do
+        filename=${src##*/}
+        link_file "$src" "$HOME/.config/$subdir/$filename"
+      done
     done
 
     # copy example files if they don't exist
