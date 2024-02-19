@@ -27,6 +27,9 @@
 [pull]
     rebase = true
 
+[rebase]
+    autoStash = true
+
 [apply]
     whitespace = nowarn
 
