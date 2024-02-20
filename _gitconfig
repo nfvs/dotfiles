@@ -5,6 +5,9 @@
 [commit]
     cleanup = scissors
 
+[init]
+    defaultBranch = main
+
 [color]
     diff = auto
     status = auto
@@ -22,7 +25,10 @@
     # Set these on windows:
     #symlinks = false
     #filemode = false
-    #autocrlf = true  # only to use CRLF locally on windows
+    #autocrlf = true
+
+[diff]
+    algorithm = histogram
 
 [pull]
     rebase = true
@@ -33,6 +39,9 @@
 [apply]
     whitespace = nowarn
 
+[branch]
+    sort = -committerdate
+
 [mergetool]
     keepBackup = false
 
@@ -40,11 +49,7 @@
     autocorrect = 1
 
 [push]
-    # See `git help config` (search for push.default)
-    # for more information on different options of the below setting.
-    #
-    # Setting to git 2.0 default to suppress warning message
-    default = simple
+    default = current  # always push to a remote branch with the same name
 
 [color "branch"]
     current = yellow reverse
