@@ -13,11 +13,11 @@ PS1='\n\u@\h \W\n\$ '
 
 # Load local RC files
 LOCAL_RC=(
-    "$HOME/.aliases"
-    "$HOME/.aliases.local"
     "$HOME/.bashrc.local"
     "$HOME/.localrc"
     "$HOME/.localenv"
+    "$HOME/.aliases"
+    "$HOME/.aliases.local"
 )
 for RC_FILE in "${LOCAL_RC[@]}"
 do
