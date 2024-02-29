@@ -4,3 +4,7 @@
 "\eOA": history-search-backward
 "\eOB": history-search-forward
 
+# Alt left/right arrow
+# Add these to iTerm2:
+# ⌥+← Send Hex Codes: 0x1b 0x62
+# ⌥+→ Send Hex Codes: 0x1b 0x66
