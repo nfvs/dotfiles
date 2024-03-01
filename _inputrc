@@ -5,6 +5,5 @@
 "\eOB": history-search-forward
 
 # Alt left/right arrow
-# Add these to iTerm2:
-# ⌥+← Send Hex Codes: 0x1b 0x62
-# ⌥+→ Send Hex Codes: 0x1b 0x66
+"\e[1;9C": forward-word
+"\e[1;9D": backward-word
