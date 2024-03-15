@@ -7,3 +7,5 @@
 # Alt left/right arrow
 "\e[1;9C": forward-word
 "\e[1;9D": backward-word
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word

@@ -49,7 +49,7 @@
     autocorrect = 1
 
 [push]
-    default = current  # always push to a remote branch with the same name
+    default = simple
 
 [color "branch"]
     current = yellow reverse
@@ -118,6 +118,10 @@
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+
+    # Full and short (ie. 8-character) SHA1 of the last commit
+    sha1 = rev-parse HEAD
+    short-sha1 = !git rev-parse HEAD | head -c 8
 
     # Diff aliases
     d = diff --stat
