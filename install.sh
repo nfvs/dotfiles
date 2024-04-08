@@ -152,7 +152,8 @@ install_dotfiles () {
     # Neovim
     mkdir -p "$HOME/.config/nvim"
     mkdir -p "$HOME/.config/nvim/after"
-    link_file "$DOTFILES_ROOT/nvim_init.vim" "$HOME/.config/nvim/init.vim"
+    mkdir -p "$HOME/.config/nvim/site/autoload"
+    link_file "$DOTFILES_ROOT/_config/nvim/nvim_init.vim" "$HOME/.config/nvim/init.vim"
     link_file "$DOTFILES_ROOT/_vim/after/ftplugin" "$HOME/.config/nvim/after/ftplugin"
 
     # Zellij
@@ -181,11 +182,17 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh-pure"
     fi
 
-
     # if command -v apt-get &> /dev/null; then
     #   sudo apt-get install -y curl git zsh tmux
     # fi
     # bash -c "$(curl -fsSL https://raw.githubusercontent.com/denysdovhan/oceanic-next-gnome-terminal/master/oceanic-next.bash)"
+
+    # Vim-Plug
+    curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    link_file "$HOME/.vim/autoload/plug.vim" "$HOME/.config/nvim/site/autoload/plug.vim"
+
+    # FZF
+    git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo_info "MacOS"
     # First things first
