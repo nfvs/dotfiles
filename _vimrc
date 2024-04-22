@@ -78,11 +78,6 @@ filetype plugin indent on
 "autocmd InsertEnter * :let @/=""
 "autocmd InsertLeave * :let @/=""
 
-" Vim seems to have issues with `screen-256color`
-if !has('nvim') && &term =~ 'screen'
-  set term=xterm-256color
-endif
-
 " Undofile
 if exists('+undofile')
   set undofile
@@ -106,6 +101,10 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
 if (has("termguicolors"))
+  if &term =~ '\%(screen\|tmux\)'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  endif
   set termguicolors
 endif
 "silent! colorscheme OceanicNext
@@ -310,19 +309,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 "let g:airline#extensions#tagbar#enabled = 0
 "let g:airline_theme='oceanicnext'
-" let g:lightline = {
-"     \ 'colorscheme': 'oceanicnext',
-"     \ 'active': {
-"     \   'left': [ [ 'mode', 'paste' ],
-"     \             [ 'readonly', 'filename', 'modified' ] ],
-"     \   'right': [ [ 'lineinfo' ],
-"     \              [ 'percent' ],
-"     \              [ 'gitbranch', 'fileformat', 'fileencoding', 'filetype' ] ]
-"     \ },
-"     \ 'component_function': {
-"     \   'gitbranch': 'fugitive#head'
-"     \ },
-"     \ }
 
 " Perforce
 "let g:perforce_auto_source_dirs = ['~/Perforce']

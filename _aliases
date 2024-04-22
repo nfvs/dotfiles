@@ -47,7 +47,7 @@ docker_containers_stopped_remove() {
 # Look for the first python venv and activate it
 # If called inside an existing one, will first deactivate it;
 # will only re-activate if inside the path of a different one
-venv() {
+_venv() {
     local existing_venv
     local new_venv
     local first_venv_activate
@@ -58,7 +58,7 @@ venv() {
 
     # ...otherwise look for the first one we can find
     if [ -z "${new_venv}" ]; then
-        first_venv_activate="$(find "$(pwd -P)" -maxdepth 3 -type f -wholename '*/bin/activate' -exec grep -q "^VIRTUAL_ENV=.*" {} \; -print -quit)";
+        first_venv_activate="$(find "$(pwd -P)" -maxdepth 3 -type f -wholename '*/bin/activate' -exec grep -q "VIRTUAL_ENV=.*" {} \; -print -quit)";
         if [ -n "${first_venv_activate}" ]; then
             new_venv="$(dirname "$(dirname "${first_venv_activate}")")"
         fi
@@ -82,6 +82,22 @@ venv() {
         . "${new_venv}/bin/activate";
     fi
 }
+
+_venv_pyenv() {
+    local ret=$?
+    if [ -n "$VIRTUAL_ENV" ]; then
+        eval "$(pyenv sh-deactivate --quiet || true)" || true
+    else
+        eval "$(pyenv sh-activate)" || true
+    fi
+    return $ret
+}
+
+if command -v pyenv &> /dev/null; then
+    alias venv=_venv_pyenv
+else
+    alias venv=_venv
+fi
 
 find_largest() {
     find "${1:-.}" -type f -exec du -ah {} + | sort -h -r

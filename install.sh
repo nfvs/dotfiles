@@ -193,6 +193,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     # FZF
     git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
+
+    # Tmux TPM
+    mkdir -p "$HOME/.tmux/plugins"
+    git clone --depth 1 https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo_info "MacOS"
     # First things first
