@@ -3,3 +3,6 @@
 #  * environment variables to configure tools (flags for compilation, data folder location, etc.)
 #  * configuration which execute commands (which might take some time)
 # Reload: `exec zsh --login
+if [[ -f "$HOME/.zprofile.local" ]]; then
+    source "$HOME/.zprofile.local"
+fi

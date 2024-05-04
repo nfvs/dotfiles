@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# MacOS: Swap § and ` (ISO to ANSI)
+# sudo hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}'
 
 set -e
 
@@ -32,14 +33,17 @@ echo_fail () {
 link_file () {
   local src=$1 dst=$2
 
-  local overwrite= backup="" skip=""
+  local overwrite=""
+  local backup=""
+  local skip=""
   local action=""
 
   if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]
   then
     if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
     then
-      local currentSrc="$(readlink "$dst")"
+      local currentSrc
+      currentSrc="$(readlink "$dst")"
 
       if [ "$currentSrc" == "$src" ]
       then
@@ -101,7 +105,9 @@ link_file () {
 install_dotfiles () {
     echo_info "installing dotfiles"
 
-    local overwrite_all=false backup_all=false skip_all=false
+    local overwrite_all=false
+    local backup_all=false
+    local skip_all=false
 
     # _<filename> -> .<filename>
     for src in $(find -H "$DOTFILES_ROOT" -maxdepth 1 -name '_*' -not -name '_*.example' -not -name '_config')
@@ -153,8 +159,9 @@ install_dotfiles () {
     mkdir -p "$HOME/.config/nvim"
     mkdir -p "$HOME/.config/nvim/after"
     mkdir -p "$HOME/.config/nvim/site/autoload"
-    link_file "$DOTFILES_ROOT/_config/nvim/nvim_init.vim" "$HOME/.config/nvim/init.vim"
+    link_file "$DOTFILES_ROOT/_config/nvim/init.vim" "$HOME/.config/nvim/init.vim"
     link_file "$DOTFILES_ROOT/_vim/after/ftplugin" "$HOME/.config/nvim/after/ftplugin"
+    link_file "$HOME/.vim/autoload/plug.vim" "$HOME/.config/nvim/site/autoload/plug.vim"
 
     # Zellij
     mkdir -p "$HOME/.config/zellij"
@@ -185,6 +192,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo_info "MacOS"
 
+    # Enable key repeat
+    defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
     # First things first
     xcode-select -p > /dev/null || xcode-select --install;
 
@@ -207,13 +217,16 @@ if [[ "$OSTYPE" == "linux-gnu" || "$OSTYPE" == "darwin"* ]]; then
 
     # Vim-Plug
     curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    link_file "$HOME/.vim/autoload/plug.vim" "$HOME/.config/nvim/site/autoload/plug.vim"
 
     # FZF
-    git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
+    if [[ ! -d "$HOME/.fzf" ]]; then
+        git clone --depth 1 https://github.com/junegunn/fzf.git "$HOME/.fzf"
+    fi
 
     # Tmux TPM
-    mkdir -p "$HOME/.tmux/plugins"
-    git clone --depth 1 https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    if [[ ! -d "$HOME/.tmux/plugins" ]]; then
+        mkdir -p "$HOME/.tmux/plugins"
+        git clone --depth 1 https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    fi
 fi
 

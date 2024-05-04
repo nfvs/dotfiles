@@ -216,6 +216,9 @@ let g:pymode_folding = 0
 let g:pymode_options_colorcolumn = 0
 
 " Ale
+" Underline errors
+highlight ALEError ctermbg=none cterm=underline
+highlight ALEWarning ctermbg=none cterm=underline
 "let g:ale_lint_on_text_changed = 'normal'
 let g:ale_linters = {
 \   'python': ['flake8', 'pydocstyle'],
