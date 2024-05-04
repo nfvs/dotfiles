@@ -131,7 +131,7 @@ install_dotfiles () {
         dst="$HOME/.$dst"
 
         if [ ! -f "$dst" ]; then
-            mv --backup=existing "$src" "$dst"
+            mv "$src" "$dst"
             echo_success "moved $src to $dst"
         else
             echo_success "skipped $dst"
@@ -175,17 +175,35 @@ install_dotfiles
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
     echo_info "Linux"
 
+
+    # if command -v apt-get &> /dev/null; then
+    #   sudo apt-get install -y curl git zsh tmux
+    # fi
+    # bash -c "$(curl -fsSL https://raw.githubusercontent.com/denysdovhan/oceanic-next-gnome-terminal/master/oceanic-next.bash)"
+
+
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    echo_info "MacOS"
+
+    # First things first
+    xcode-select -p > /dev/null || xcode-select --install;
+
+    # install brew
+    if ! command -v brew &> /dev/null; then
+        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+
+    brew bundle
+
+fi
+
+if [[ "$OSTYPE" == "linux-gnu" || "$OSTYPE" == "darwin"* ]]; then
     install_oh_my_zsh
 
     # Install ZSH Pure prompt
     if [ ! -d "$HOME/.zsh-pure" ]; then
         git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh-pure"
     fi
-
-    # if command -v apt-get &> /dev/null; then
-    #   sudo apt-get install -y curl git zsh tmux
-    # fi
-    # bash -c "$(curl -fsSL https://raw.githubusercontent.com/denysdovhan/oceanic-next-gnome-terminal/master/oceanic-next.bash)"
 
     # Vim-Plug
     curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -197,26 +215,5 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     # Tmux TPM
     mkdir -p "$HOME/.tmux/plugins"
     git clone --depth 1 https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    echo_info "MacOS"
-    # First things first
-    xcode-select -p > /dev/null || xcode-select --install;
-
-    # install brew
-    if ! command -v brew &> /dev/null; then
-        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-
-    brew bundle
-
-    install_oh_my_zsh
 fi
-
-
-# ... then the others
-# find . -mindepth 2 -name install.sh | grep -v 'homebrew' | while read installer ; do
-# 	echo_info "› Installing ${installer}"
-# 	sh -c "${installer}" < /dev/tty
-# done
-
 
